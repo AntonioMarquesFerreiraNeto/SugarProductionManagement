@@ -1,0 +1,45 @@
+﻿<!-- CSS personalizado -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="~/css/funcionario.css">
+<link rel="stylesheet" href="~/css/datatable.css" />
+
+@model List<Funcionario>
+
+<!--HTML da página-->
+<div class="container-funci">
+    <div class="container-title">
+        <h1 class="title">Funcionários</h1>
+    </div>
+    <div class="container-button">
+        <div>
+            <a class="btn button">Ativos</a>
+            <a class="btn button">Inativos</a>
+        </div>
+        <div><a class="btn button" asp-action="CreateFuncionario" asp-controller="Funcionario">+ Funcionário</a></div>
+    </div>
+    <table id="table-funcionario" class="table shadow-sm p-3 mb-5 bg-white rounded">
+        <thead>
+            <tr>
+                <th style="font-size: 9pt;" scope="col">Id</th>
+                <th style="font-size: 9pt;" scope="col">Nome</th>
+                <th style="font-size: 9pt;" scope="col">Telefone</th>
+                <th style="font-size: 9pt;" scope="col">Cidade</th>
+                <th style="font-size: 9pt;" scope="col">Opção</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var funcionario in Model) {
+                <tr class="row-hover">
+                    <td scope="row">@funcionario.Id</td>
+                    <td>@funcionario.Name</td>
+                    <td>@funcionario.Tel</td>
+                    <td>@funcionario.Cidade</td>
+                    <td>
+                        <a class="edit"><i class="fa fa-edit"></i></a>
+                        <a class="trash"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

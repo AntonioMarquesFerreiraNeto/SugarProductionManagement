@@ -1,0 +1,98 @@
+﻿form{
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.col-md-6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    flex-basis: 500px;
+    flex-grow: 1;
+}
+.form-control {
+    height: 30px;
+}
+.error-message small {
+    position: absolute;
+    font-size: 9pt;
+    top: 29px;
+    right: 0px;
+    color: orangered;
+}
+
+.position-text small {
+    position: absolute;
+    font-size: 9pt;
+    top: 133px;
+    right: 14px;
+    color: rgb(255, 94, 0);
+}
+/*Caixa de entrada de usuário*/
+.input-group-prepend span {
+    width: 40px;
+    height: 30px;
+    margin-left: 0px;
+    background-color: #1f1f33;
+    color: rgb(255, 255, 255);
+    border: 0 !important;
+}
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+/*botão Login*/
+.container-botoes{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submit_btn {
+    margin-top: 10px;
+    padding: 7px 7px;
+    min-width: 110px;
+    background-color: #1f1f33;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+    .submit_btn:hover {
+        color: #ffff;
+        border: none;
+        background-color: darkblue;
+    }
+
+.voltar-btn {
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 7px 7px;
+    min-width: 110px;
+    background-color: #1f1f33;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+    .voltar-btn:hover {
+        border: none;
+        color: #ffff;
+        background-color: darkred;
+    }
