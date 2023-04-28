@@ -16,7 +16,7 @@
 .button {
     margin-top: 10px;
     padding: 7px 7px;
-    min-width: 110px;
+    min-width: 150px;
     background-color: #1f1f33;
     color: #fff;
     border: none;
@@ -31,6 +31,7 @@
 }
 
     .button:hover {
+        transform: translateY(-2px);
         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
         background-color: rgb(40, 40, 40);
         text-decoration: none;
@@ -67,3 +68,11 @@
     .trash:hover {
         color: darkred;
     }
+@media(max-width: 600px){
+    .container-button{
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}

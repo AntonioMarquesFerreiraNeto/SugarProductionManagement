@@ -31,11 +31,13 @@
     <main class="main-class">
         @RenderBody()
     </main>
-    <script src="~/lib/jquery/dist/bootstrap.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery/dist//main.js"></script>
-    <script src="~/lib/jquery/dist/popper.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/popper.js"></script>
     <script src="~/js/site.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/datatables.min.js"></script>
+    <script src="~/js/Pre-Louding.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

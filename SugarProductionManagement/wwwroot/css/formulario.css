@@ -18,7 +18,7 @@
 .error-message small {
     position: absolute;
     font-size: 9pt;
-    top: 29px;
+    top: 28px;
     right: 0px;
     color: orangered;
 }
@@ -34,6 +34,9 @@
 .input-group-prepend span {
     width: 40px;
     height: 30px;
+    border-radius: 0px;
+    border-end-start-radius: 5px;
+    border-start-start-radius: 5px;
     margin-left: 0px;
     background-color: #1f1f33;
     color: rgb(255, 255, 255);
@@ -48,12 +51,14 @@ input:focus {
 .container-botoes{
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .submit_btn {
     margin-top: 10px;
+    margin-right: 8px;
     padding: 7px 7px;
-    min-width: 110px;
+    min-width: 150px;
     background-color: #1f1f33;
     color: #fff;
     border: none;
@@ -70,6 +75,7 @@ input:focus {
     .submit_btn:hover {
         color: #ffff;
         border: none;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
         background-color: darkblue;
     }
 
@@ -77,7 +83,7 @@ input:focus {
     margin-right: 10px;
     margin-top: 10px;
     padding: 7px 7px;
-    min-width: 110px;
+    min-width: 150px;
     background-color: #1f1f33;
     color: #fff;
     border: none;
@@ -93,6 +99,7 @@ input:focus {
 
     .voltar-btn:hover {
         border: none;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
         color: #ffff;
         background-color: darkred;
     }

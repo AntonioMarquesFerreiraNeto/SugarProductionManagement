@@ -39,7 +39,7 @@
             <a class="btn button" asp-action="Index" asp-controller="Funcionario">Ativos</a>
             <a class="btn button" asp-action="Inativos" asp-controller="Funcionario">Inativos</a>
         </div>
-        <div><a class="btn button" asp-action="CreateFuncionario" asp-controller="Funcionario">+ Funcionário</a></div>
+        <div><a class="btn button" asp-action="CreateFuncionario" asp-controller="Funcionario"><i class="fa fa-plus"></i> Funcionário</a></div>
     </div>
     <table id="table-funcionario" class="table shadow-sm p-3 mb-5 bg-white rounded">
         <thead>
@@ -81,3 +81,40 @@
         </tbody>
     </table>
 </div>
+<script src="~/js/datatables.min.js"></script>
+<script src="~/js/site.js"></script>
+<script src="~/js/jquery.min.js"></script>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#table-funcionario').DataTable({
+                "ordering": true,
+                "paging": true,
+                "searching": true,
+                "oLanguage": {
+                    "sEmptyTable": "Não existe registros no sistema.",
+                    "sInfo": "",
+                    "sInfoEmpty": "",
+                    "sInfoFiltered": "",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Sua pesquisa não encontrou nenhum registro correspondente.",
+                    "sSearch": "Pesquisar:  ",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+                }
+            });
+        });
+    </script>
+   }

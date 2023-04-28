@@ -37,6 +37,66 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\DeleteClientSelect.js",
+      "PackagePath": "staticwebassets\\js\\DeleteClientSelect.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\OcultarMostrarSenha.js",
+      "PackagePath": "staticwebassets\\js\\OcultarMostrarSenha.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\Pre-Louding.js",
+      "PackagePath": "staticwebassets\\js\\Pre-Louding.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\ReturnList.js",
+      "PackagePath": "staticwebassets\\js\\ReturnList.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\all.js",
+      "PackagePath": "staticwebassets\\js\\all.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\all.min.js",
+      "PackagePath": "staticwebassets\\js\\all.min.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\datatables.min.js",
+      "PackagePath": "staticwebassets\\js\\datatables.min.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\fontawesome.js",
+      "PackagePath": "staticwebassets\\js\\fontawesome.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\fontawesome.min.js",
+      "PackagePath": "staticwebassets\\js\\fontawesome.min.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\mascaraMoney.js",
+      "PackagePath": "staticwebassets\\js\\mascaraMoney.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\popper.js",
+      "PackagePath": "staticwebassets\\js\\popper.js"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\returnRescisaoModal.js",
+      "PackagePath": "staticwebassets\\js\\returnRescisaoModal.js"
+    },
+    {
       "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
