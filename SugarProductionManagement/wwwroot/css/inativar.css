@@ -1,0 +1,11 @@
+﻿.container-botoes {
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.voltar-btn {
+    min-width: 300px;
+}
+.submit_btn {
+    min-width: 300px;
+}

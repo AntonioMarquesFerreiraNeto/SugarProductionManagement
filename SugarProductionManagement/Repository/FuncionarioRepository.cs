@@ -14,8 +14,9 @@ namespace SugarProductionManagement.Repository {
         public Funcionario Ativar(Funcionario funcionario) {
             Funcionario funcionarioDB = GetFuncionarioById(funcionario.Id);
             if (funcionarioDB == null) throw new Exception("Nenhum registro encontrado!");
-            funcionarioDB.Status = Models.Enums.FuncionarioStatus.Ativo;
+            funcionarioDB.Status = FuncionarioStatus.Ativo;
             _bancoContext.Funcionario.Update(funcionarioDB);
+            _bancoContext.SaveChanges();
             return funcionarioDB;
         }
 
@@ -45,13 +46,36 @@ namespace SugarProductionManagement.Repository {
         public Funcionario Inativar(Funcionario funcionario) {
             Funcionario funcionarioDB = GetFuncionarioById(funcionario.Id);
             if (funcionarioDB == null) throw new Exception("Nenhum registro encontrado!");
-            funcionarioDB.Status = Models.Enums.FuncionarioStatus.Inativo;
+            funcionarioDB.Status = FuncionarioStatus.Inativo;
             _bancoContext.Funcionario.Update(funcionarioDB);
+            _bancoContext.SaveChanges();
             return funcionarioDB;
         }
 
         public Funcionario Update(Funcionario funcionario) {
-            throw new NotImplementedException();
+            try {
+                Funcionario funcionarioDB = GetFuncionarioById(funcionario.Id);
+                if (funcionarioDB == null) throw new Exception("Nenhum registro encontrado!");
+                funcionarioDB.Name = funcionario.Name;
+                funcionarioDB.Rg = funcionario.Rg;
+                funcionarioDB.Cpf = funcionario.Cpf;
+                funcionarioDB.Tel = funcionario.Tel;
+                funcionarioDB.Email = funcionario.Email;
+                funcionarioDB.DataNascimento = funcionario.DataNascimento;
+                funcionarioDB.Logradouro = funcionario.Logradouro;
+                funcionarioDB.NumeroResidencial = funcionario.NumeroResidencial;
+                funcionarioDB.ComplementoResidencial = funcionario.ComplementoResidencial;
+                funcionarioDB.Bairro = funcionario.Bairro;
+                funcionarioDB.Cidade = funcionario.Cidade;
+                funcionarioDB.Estado = funcionario.Estado;
+
+                _bancoContext.Funcionario.Update(funcionarioDB);
+                _bancoContext.SaveChanges();
+                return funcionario;
+            }
+            catch (Exception error) {
+                throw new Exception(error.Message);
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿@model Funcionario
-<link rel="stylesheet" href="~/css/funcionario.css"/>
-<link rel="stylesheet" href="~/css/formulario.css"/>
+<link rel="stylesheet" href="~/css/funcionario.css" />
+<link rel="stylesheet" href="~/css/formulario.css" />
 
 @if (TempData["Sucesso"] != null) {
     <div class="alert alert-success" role="alert">
@@ -15,10 +15,11 @@
     </div>
 }
 <div class="container-funci">
-	<div class="container-title">
-		<h1 class="title"><i class="fa fa-user-gear"></i> Novo funcionário</h1>
-	</div>
-	<form class="flex-container" asp-action="CreateFuncionario" asp-controller="Funcionario">
+    <div class="container-title">
+        <h1 class="title"><i class="fa fa-user-gear"></i> Editar funcionário</h1>
+    </div>
+    <form class="flex-container" asp-action="EditFuncionario" asp-controller="Funcionario">
+        <input type="hidden" asp-for="Id">
         <div class="input-group form-group col-md-6">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -155,5 +156,5 @@
             <a class="btn voltar-btn" asp-action="Index" asp-controller="Funcionario">Voltar</a>
             <input type="submit" value="Salvar" class="btn submit_btn">
         </div>
-	</form>
+    </form>
 </div>

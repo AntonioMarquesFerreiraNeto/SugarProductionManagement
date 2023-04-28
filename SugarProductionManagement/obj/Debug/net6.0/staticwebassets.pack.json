@@ -21,6 +21,14 @@
       "PackagePath": "staticwebassets\\css\\home.css"
     },
     {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\css\\imagens\\iconsSugar.png",
+      "PackagePath": "staticwebassets\\css\\imagens\\iconsSugar.png"
+    },
+    {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\css\\inativar.css",
+      "PackagePath": "staticwebassets\\css\\inativar.css"
+    },
+    {
       "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

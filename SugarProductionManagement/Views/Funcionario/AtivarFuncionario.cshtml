@@ -1,6 +1,7 @@
 ﻿@model Funcionario
-<link rel="stylesheet" href="~/css/funcionario.css"/>
-<link rel="stylesheet" href="~/css/formulario.css"/>
+<link rel="stylesheet" href="~/css/funcionario.css" />
+<link rel="stylesheet" href="~/css/formulario.css" />
+<link rel="stylesheet" href="~/css/inativar.css" />
 
 @if (TempData["Sucesso"] != null) {
     <div class="alert alert-success" role="alert">
@@ -9,21 +10,22 @@
     </div>
 }
 @if (TempData["Error"] != null) {
-    <div class="alert alert-danger" role="alert" style="margin-bottom: 3px;">
-        @TempData["Error"]
-        <button type="button" class="btn btn-danger btn-sm close-alert erro" aria-label="Close"> <i class="fa fa fa-xmark"></i> </button>
-    </div>
+<div class="alert alert-danger" role="alert" style="margin-bottom: 3px;">
+    @TempData["Error"]
+    <button type="button" class="btn btn-danger btn-sm close-alert erro" aria-label="Close"> <i class="fa fa fa-xmark"></i> </button>
+</div>
 }
 <div class="container-funci">
-	<div class="container-title">
-		<h1 class="title"><i class="fa fa-user-gear"></i> Novo funcionário</h1>
-	</div>
-	<form class="flex-container" asp-action="CreateFuncionario" asp-controller="Funcionario">
+    <div class="container-title">
+        <h1 class="title"><i class="fa fa-user-gear"></i> Ativar funcionário</h1>
+    </div>
+    <form class="flex-container" asp-action="AtivarFuncionario" asp-controller="Funcionario">
+        <input type="hidden" asp-for="Id">
         <div class="input-group form-group col-md-6">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-            <input type="text" class="form-control" asp-for="Name" placeholder="informe o nome.">
+            <input type="text" class="form-control" asp-for="Name" readonly placeholder="informe o nome.">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.Name)
@@ -34,7 +36,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-calendar-days"></i></span>
             </div>
-            <input type="date" class="form-control" asp-for="DataNascimento" placeholder="informe a data de nascimento.">
+            <input type="date" class="form-control" asp-for="DataNascimento" readonly placeholder="informe a data de nascimento.">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.DataNascimento)
@@ -45,7 +47,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-address-card"></i></span>
             </div>
-            <input type="text" class="form-control" asp-for="Rg" placeholder="informe o RG.">
+            <input type="text" class="form-control" asp-for="Rg" placeholder="informe o RG." readonly>
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.Rg)
@@ -56,7 +58,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-address-card"></i></span>
             </div>
-            <input type="text" class="form-control" onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="Cpf" placeholder="informe o CPF.">
+            <input type="text" class="form-control" readonly onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="Cpf" placeholder="informe o CPF.">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.Cpf)
@@ -67,7 +69,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
             </div>
-            <input type="text" class="form-control" asp-for="Email" placeholder="informe o e-mail.">
+            <input type="text" class="form-control" readonly asp-for="Email" placeholder="informe o e-mail.">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.Email)
@@ -78,7 +80,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
             </div>
-            <input type="text" class="form-control" asp-for="Tel" placeholder="informe o telefone.">
+            <input type="text" class="form-control" readonly asp-for="Tel" placeholder="informe o telefone.">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.Name)
@@ -89,7 +91,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-location-dot"></i></span>
             </div>
-            <input type="text" class="form-control" asp-for="NumeroResidencial" placeholder="informe o número residencial.">
+            <input type="text" class="form-control" readonly asp-for="NumeroResidencial" placeholder="informe o número residencial.">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.NumeroResidencial)
@@ -100,7 +102,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-location-dot"></i></span>
             </div>
-            <input type="text" class="form-control" asp-for="Logradouro" placeholder="informe o logradouro.">
+            <input type="text" class="form-control" readonly asp-for="Logradouro" placeholder="informe o logradouro.">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.Logradouro)
@@ -111,7 +113,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-location-dot"></i></span>
             </div>
-            <input type="text" class="form-control" asp-for="ComplementoResidencial" placeholder="informe o complemento residencial.">
+            <input type="text" class="form-control" readonly asp-for="ComplementoResidencial" placeholder="informe o complemento residencial.">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.ComplementoResidencial)
@@ -122,7 +124,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-location-dot"></i></span>
             </div>
-            <input type="text" class="form-control" asp-for="Bairro" placeholder="informe o bairro.">
+            <input type="text" class="form-control" readonly asp-for="Bairro" placeholder="informe o bairro.">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.Bairro)
@@ -133,7 +135,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-location-dot"></i></span>
             </div>
-            <input type="text" class="form-control" asp-for="Cidade" placeholder="informe a cidade.">
+            <input type="text" class="form-control" readonly asp-for="Cidade" placeholder="informe a cidade.">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.Cidade)
@@ -144,7 +146,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-location-dot"></i></span>
             </div>
-            <input type="text" class="form-control" asp-for="Estado" placeholder="informe o estado.">
+            <input type="text" class="form-control" readonly asp-for="Estado" placeholder="informe o estado.">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.Estado)
@@ -153,7 +155,7 @@
         </div>
         <div class="form-group container-botoes col-md-12">
             <a class="btn voltar-btn" asp-action="Index" asp-controller="Funcionario">Voltar</a>
-            <input type="submit" value="Salvar" class="btn submit_btn">
+            <input type="submit" value="Ativar" class="btn submit_btn">
         </div>
-	</form>
+    </form>
 </div>

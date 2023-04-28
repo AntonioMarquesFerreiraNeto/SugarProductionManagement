@@ -4,16 +4,40 @@
 <link rel="stylesheet" href="~/css/datatable.css" />
 
 @model List<Funcionario>
-
+@using SugarProductionManagement.Models.Enums
 <!--HTML da página-->
-<div class="container-funci">
-    <div class="container-title">
-        <h1 class="title">Funcionários</h1>
+@if (TempData["Sucesso"] != null) {
+    <div class="alert alert-success" role="alert">
+        @TempData["Sucesso"]
+        <button type="button" class="btn btn-danger btn-sm close-alert sucesso" aria-label="Close"> <i class="fa fa fa-xmark"></i> </button>
     </div>
+}
+@if (TempData["Error"] != null) {
+    <div class="alert alert-danger" role="alert" style="margin-bottom: 3px;">
+        @TempData["Error"]
+        <button type="button" class="btn btn-danger btn-sm close-alert erro" aria-label="Close"> <i class="fa fa fa-xmark"></i> </button>
+    </div>
+}
+<div class="container-funci">
+    @if (Model.Any(x => x.Status == FuncionarioStatus.Ativo)) {
+        <div class="container-title">
+            <h1 class="title"><i class="fa fa-users-gear"></i> Funcionários ativos</h1>
+        </div>
+    }
+    else if (Model.Any(x => x.Status == FuncionarioStatus.Inativo)) {
+        <div class="container-title">
+            <h1 class="title" style="color: red;"><i class="fa fa-users-gear"></i> Funcionários inativos</h1>
+        </div>
+    }
+    else {
+        <div class="container-title">
+            <h1 class="title"><i class="fa fa-users-gear"></i> Funcionários</h1>
+        </div>
+    }
     <div class="container-button">
         <div>
-            <a class="btn button">Ativos</a>
-            <a class="btn button">Inativos</a>
+            <a class="btn button" asp-action="Index" asp-controller="Funcionario">Ativos</a>
+            <a class="btn button" asp-action="Inativos" asp-controller="Funcionario">Inativos</a>
         </div>
         <div><a class="btn button" asp-action="CreateFuncionario" asp-controller="Funcionario">+ Funcionário</a></div>
     </div>
@@ -28,16 +52,30 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var funcionario in Model) {
+            @if (Model.Count != 0) {
+                @foreach (var funcionario in Model) {
+                    <tr class="row-hover">
+                        <td scope="row">@funcionario.Id</td>
+                        <td>@funcionario.Name</td>
+                        <td>@funcionario.Tel</td>
+                        <td>@funcionario.Cidade</td>
+                        @if (funcionario.Status == FuncionarioStatus.Ativo) {
+                            <td>
+                                <a class="edit" asp-action="EditFuncionario" asp-controller="Funcionario" asp-route-id="@funcionario.Id"><i class="fa fa-edit"></i></a>
+                                <a class="trash" asp-action="InativarFuncionario" asp-controller="Funcionario" asp-route-id="@funcionario.Id"><i class="fa fa-trash"></i></a>
+                            </td>
+                        }
+                        else {
+                            <td>
+                                <a class="edit" asp-action="AtivarFuncionario" asp-controller="Funcionario" asp-route-id="@funcionario.Id"><i class="fa fa-user-gear"></i></a>
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+            else {
                 <tr class="row-hover">
-                    <td scope="row">@funcionario.Id</td>
-                    <td>@funcionario.Name</td>
-                    <td>@funcionario.Tel</td>
-                    <td>@funcionario.Cidade</td>
-                    <td>
-                        <a class="edit"><i class="fa fa-edit"></i></a>
-                        <a class="trash"><i class="fa fa-trash"></i></a>
-                    </td>
+                    <td colspan="5">Nenhum registro encontrado.</td>
                 </tr>
             }
         </tbody>

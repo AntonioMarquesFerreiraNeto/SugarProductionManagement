@@ -17,7 +17,7 @@ namespace SugarProductionManagement.Models.ValidationsModels {
             long dias = (int)dataAtual.Subtract(dataNascimento).TotalDays;
             int idade = (int)dias / 365;
 
-            if (dataNascimento > dataAtual || idade > 132) {
+            if (idade < 18 || idade > 132) {
                 return false;
             }
             return true;

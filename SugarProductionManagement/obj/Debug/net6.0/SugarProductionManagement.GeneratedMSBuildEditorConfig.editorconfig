@@ -16,8 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/anton/source/repos/SugarProductionManagement/SugarProductionManagement/Views/Funcionario/AtivarFuncionario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cQXRpdmFyRnVuY2lvbmFyaW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/anton/source/repos/SugarProductionManagement/SugarProductionManagement/Views/Funcionario/CreateFuncionario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cQ3JlYXRlRnVuY2lvbmFyaW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/anton/source/repos/SugarProductionManagement/SugarProductionManagement/Views/Funcionario/EditFuncionario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cRWRpdEZ1bmNpb25hcmlvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/anton/source/repos/SugarProductionManagement/SugarProductionManagement/Views/Funcionario/InativarFuncionario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cSW5hdGl2YXJGdW5jaW9uYXJpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/anton/source/repos/SugarProductionManagement/SugarProductionManagement/Views/Funcionario/Index.cshtml]
