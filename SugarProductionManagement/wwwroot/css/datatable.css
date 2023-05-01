@@ -119,3 +119,6 @@ td{
                 color: #fff;
                 border-color: #4d90fe;
             }
+.dataTables_paginate a{
+    text-decoration: none;
+}
