@@ -1,0 +1,160 @@
+﻿@model Fornecedor
+<link rel="stylesheet" href="~/css/funcionario.css" />
+<link rel="stylesheet" href="~/css/formulario.css" />
+
+@if (TempData["Sucesso"] != null) {
+    <div class="alert alert-success" role="alert">
+        @TempData["Sucesso"]
+        <button type="button" class="btn btn-danger btn-sm close-alert sucesso" aria-label="Close"> <i class="fa fa fa-xmark"></i> </button>
+    </div>
+}
+@if (TempData["Error"] != null) {
+    <div class="alert alert-danger" role="alert" style="margin-bottom: 3px;">
+        @TempData["Error"]
+        <button type="button" class="btn btn-danger btn-sm close-alert erro" aria-label="Close"> <i class="fa fa fa-xmark"></i> </button>
+    </div>
+}
+<div class="container-funci">
+    <div class="container-title">
+        <h1 class="title"><i class="fa fa-user-gear"></i> Editar fornecedor</h1>
+    </div>
+    <form class="flex-container" asp-action="EditFornecedor" asp-controller="Fornecedor">
+        <input type="hidden" asp-for="Id">
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="Name" placeholder="informe o nome.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.Name)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-calendar-days"></i></span>
+            </div>
+            <input type="date" class="form-control" asp-for="DataNascimento" placeholder="informe a data de nascimento.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.DataNascimento)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="Rg" placeholder="informe o RG.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.Rg)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+            </div>
+            <input type="text" class="form-control" onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="Cpf" placeholder="informe o CPF.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.Cpf)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="Email" placeholder="informe o e-mail.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.Email)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="Tel" placeholder="informe o telefone.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.Name)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-location-dot"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="NumeroResidencial" placeholder="informe o número residencial.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.NumeroResidencial)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-location-dot"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="Logradouro" placeholder="informe o logradouro.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.Logradouro)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-location-dot"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="ComplementoResidencial" placeholder="informe o complemento residencial.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.ComplementoResidencial)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-location-dot"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="Bairro" placeholder="informe o bairro.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.Bairro)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-location-dot"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="Cidade" placeholder="informe a cidade.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.Cidade)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-location-dot"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="Estado" placeholder="informe o estado.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.Estado)
+                </small>
+            </div>
+        </div>
+        <div class="form-group container-botoes col-md-12">
+            <a class="btn voltar-btn" asp-action="Index" asp-controller="Fornecedor">Voltar</a>
+            <input type="submit" value="Salvar" class="btn submit_btn">
+        </div>
+    </form>
+</div>
