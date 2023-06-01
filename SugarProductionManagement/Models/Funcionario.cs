@@ -1,5 +1,5 @@
 ﻿using SugarProductionManagement.Models.Enums;
-using SugarProductionManagement.Models.ValidationsModels;
+using SugarProductionManagement.Models.ValidationsModels.Pessoas;
 using System.ComponentModel.DataAnnotations;
 
 namespace SugarProductionManagement.Models {

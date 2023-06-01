@@ -56,13 +56,13 @@
                 @foreach (var fornecedor in Model) {
                     <tr class="row-hover">
                         <td scope="row">@fornecedor.Id</td>
-                        <td>@fornecedor.Name</td>
+                        <td>@fornecedor.RazaoSocial</td>
                         <td>@fornecedor.Tel</td>
                         <td>@fornecedor.Cidade</td>
                         @if (fornecedor.Status == FornecedorStatus.Ativo) {
                             <td>
                                 <a class="edit" asp-action="EditFornecedor" asp-controller="Fornecedor" asp-route-id="@fornecedor.Id"><i class="fa fa-edit"></i></a>
-                                <a class="trash" asp-action="InativarFornecedor" asp-controller="Fornecedor" asp-route-id="@fornecedor.Id"><i class="fa fa-trash"></i></a>
+                                <a class="trash" asp-action="InativarFornecedor" asp-controller="Fornecedor" asp-route-id="@fornecedor.Id"><i class="fa fa-trash-alt"></i></a>
                             </td>
                         }
                         else {

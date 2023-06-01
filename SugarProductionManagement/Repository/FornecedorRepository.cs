@@ -67,12 +67,13 @@ namespace SugarProductionManagement.Repository {
                 Fornecedor fornecedorDB = GetFornecedorById(fornecedor.Id);
                 if (fornecedorDB == null) throw new Exception("Desculpe, houve algum conflito interno!");
 
-                fornecedorDB.Name = fornecedor.Name;
-                fornecedorDB.Rg = fornecedor.Rg;
-                fornecedorDB.Cpf = fornecedor.Cpf;
+                fornecedorDB.NomeFantasia = fornecedor.NomeFantasia;
+                fornecedorDB.RazaoSocial = fornecedor.RazaoSocial;
+                fornecedorDB.InscricaoMunicipal = fornecedor.InscricaoMunicipal;
+                fornecedorDB.InscricaoEstadual = fornecedor.InscricaoEstadual;
+                fornecedorDB.Cnpj = fornecedor.Cnpj;
                 fornecedorDB.Tel = fornecedor.Tel;
                 fornecedorDB.Email = fornecedor.Email;
-                fornecedorDB.DataNascimento = fornecedor.DataNascimento;
                 fornecedorDB.Logradouro = fornecedor.Logradouro;
                 fornecedorDB.NumeroResidencial = fornecedor.NumeroResidencial;
                 fornecedorDB.ComplementoResidencial = fornecedor.ComplementoResidencial;

@@ -1,5 +1,5 @@
 ﻿using SugarProductionManagement.Models.Enums;
-using SugarProductionManagement.Models.ValidationsModels;
+using SugarProductionManagement.Models.ValidationsModels.Pessoas;
 using System.ComponentModel.DataAnnotations;
 
 namespace SugarProductionManagement.Models {
@@ -8,15 +8,25 @@ namespace SugarProductionManagement.Models {
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório!")]
-        public string? Name { get; set; }
+        [MinLength(2, ErrorMessage = "Campo inválido!")]
+        public string? NomeFantasia { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório!")]
-        [MinLength(5, ErrorMessage = "Campo inválido!")]
-        public string? Rg { get; set; }
+        [ValidationCNPJ(ErrorMessage = "Campo inválido!")]
+        public string? Cnpj { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório!")]
-        [ValidationCPF(ErrorMessage = "Campo inválido!")]
-        public string? Cpf { get; set; }
+        [MinLength(3, ErrorMessage = "Campo inválido!")]
+        public string? RazaoSocial { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        [MinLength(9, ErrorMessage = "Campo inválido!")]
+        public string? InscricaoEstadual { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        [MinLength(11, ErrorMessage = "Campo inválido!")]
+        public string? InscricaoMunicipal { get; set; }
+
 
         [EmailValidation(ErrorMessage = "Campo inválido!")]
         public string? Email { get; set; }
@@ -26,9 +36,9 @@ namespace SugarProductionManagement.Models {
         [MaxLength(9, ErrorMessage = "Campo inválido!")]
         public string? Tel { get; set; }
 
-        [ValidationDateNascimento(ErrorMessage = "Campo inválido!")]
-        [Required(ErrorMessage = "Campo obrigatório!")]
-        public DateTime? DataNascimento { get; set; }
+        public string ReturnCnpjCliente() {
+            return $"{Convert.ToUInt64(Cnpj): 00\\.000\\.000\\/0000-00}";
+        }
 
         public FornecedorStatus Status { get; set; }
     }

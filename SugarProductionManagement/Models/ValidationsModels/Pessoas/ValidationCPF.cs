@@ -1,15 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SugarProductionManagement.Models.ValidationsModels {
-    public class ValidationCPF : ValidationAttribute {
-        public override bool IsValid(object? value) {
-            if (value == null || string.IsNullOrEmpty(value.ToString())) {
+namespace SugarProductionManagement.Models.ValidationsModels.Pessoas
+{
+    public class ValidationCPF : ValidationAttribute
+    {
+        public override bool IsValid(object? value)
+        {
+            if (value == null || string.IsNullOrEmpty(value.ToString()))
+            {
                 return false;
             }
             return ValidarCPF(value.ToString());
         }
 
-        public bool ValidarCPF(string value) {
+        public bool ValidarCPF(string value)
+        {
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             string tempCpf;

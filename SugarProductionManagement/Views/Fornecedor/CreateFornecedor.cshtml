@@ -19,47 +19,77 @@
         <h1 class="title"><i class="fa fa-user-gear"></i> Novo fornecedor</h1>
     </div>
     <form class="flex-container" asp-action="CreateFornecedor" asp-controller="Fornecedor">
-        <div class="input-group form-group col-md-6">
+        <div class="col-md-6 input-group form-group form-it">
             <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <span class="input-group-text">
+                    <i class="fa fa-user-tie"></i>
+                </span>
             </div>
-            <input type="text" class="form-control" asp-for="Name" placeholder="informe o nome.">
+            <input type="text" class="form-control" id="inputNomeFantasia"
+                   placeholder="Informe o nome fantasia do cliente." maxlength="60" asp-for="NomeFantasia">
             <div class="error-message">
                 <small>
-                    @Html.ValidationMessageFor(x => x.Name)
+                    @Html.ValidationMessageFor(x => x.NomeFantasia)
                 </small>
             </div>
         </div>
-        <div class="input-group form-group col-md-6">
+        <div class="col-md-6 input-group form-group form-it">
             <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-calendar-days"></i></span>
+                <span class="input-group-text">
+                    <i class="fas fa-user-tie"></i>
+                </span>
             </div>
-            <input type="date" class="form-control" asp-for="DataNascimento" placeholder="informe a data de nascimento.">
+            <input type="text" class="form-control" id="inputRasaoSocial"
+                   placeholder="Informe a razão social do cliente." maxlength="60"
+                   asp-for="RazaoSocial">
             <div class="error-message">
                 <small>
-                    @Html.ValidationMessageFor(x => x.DataNascimento)
+                    @Html.ValidationMessageFor(x => x.RazaoSocial)
                 </small>
             </div>
         </div>
-        <div class="input-group form-group col-md-6">
+        <div class="col-md-6 input-group form-group form-it">
             <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+                <span class="input-group-text">
+                    <i class="fas fa-address-card"></i>
+                </span>
             </div>
-            <input type="text" class="form-control" asp-for="Rg" placeholder="informe o RG.">
+            <input type="text" class="form-control" id="inputCnpj"
+                   placeholder="Informe o CNPJ do cliente." maxlength="14"
+                   onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="Cnpj">
             <div class="error-message">
                 <small>
-                    @Html.ValidationMessageFor(x => x.Rg)
+                    @Html.ValidationMessageFor(x => x.Cnpj)
                 </small>
             </div>
         </div>
-        <div class="input-group form-group col-md-6">
+        <div class="col-md-6 input-group form-group form-it">
             <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+                <span class="input-group-text">
+                    <i class="fas fa-address-card"></i>
+                </span>
             </div>
-            <input type="text" class="form-control" onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="Cpf" placeholder="informe o CPF.">
+            <input type="text" class="form-control" id="inputInscriEsta"
+                   placeholder="Informe a inscrição estadual do cliente." maxlength="14"
+                   onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="InscricaoEstadual">
             <div class="error-message">
                 <small>
-                    @Html.ValidationMessageFor(x => x.Cpf)
+                    @Html.ValidationMessageFor(x => x.InscricaoEstadual)
+                </small>
+            </div>
+        </div>
+        <div class="col-md-6 input-group form-group form-it">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <i class="fas fa-address-card"></i>
+                </span>
+            </div>
+            <input type="text" class="form-control" id="inputInscriMuni"
+                   placeholder="Informe a inscrição municipal do cliente."
+                   maxlength="14" onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="InscricaoMunicipal">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.InscricaoMunicipal)
                 </small>
             </div>
         </div>
@@ -81,7 +111,7 @@
             <input type="text" class="form-control" asp-for="Tel" placeholder="informe o telefone.">
             <div class="error-message">
                 <small>
-                    @Html.ValidationMessageFor(x => x.Name)
+                    @Html.ValidationMessageFor(x => x.Tel)
                 </small>
             </div>
         </div>

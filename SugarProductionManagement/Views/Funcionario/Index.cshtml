@@ -62,7 +62,7 @@
                         @if (funcionario.Status == FuncionarioStatus.Ativo) {
                             <td>
                                 <a class="edit" asp-action="EditFuncionario" asp-controller="Funcionario" asp-route-id="@funcionario.Id"><i class="fa fa-edit"></i></a>
-                                <a class="trash" asp-action="InativarFuncionario" asp-controller="Funcionario" asp-route-id="@funcionario.Id"><i class="fa fa-trash"></i></a>
+                                <a class="trash" asp-action="InativarFuncionario" asp-controller="Funcionario" asp-route-id="@funcionario.Id"><i class="fa fa-trash-alt"></i></a>
                             </td>
                         }
                         else {
