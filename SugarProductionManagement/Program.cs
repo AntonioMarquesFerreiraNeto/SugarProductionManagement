@@ -17,7 +17,8 @@ namespace SugarProductionManagement {
 
             //ATENÇÃO: Necessita iniciar os serviços do sistema. Caso contrário, o sistema não irá rodar. 
             builder.Services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
-            builder.Services.AddScoped<IFornecedorRepository, FornecedorRepository>();
+            builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+            builder.Services.AddScoped<ISafraRepository, SafraRepository>();
 
 
 

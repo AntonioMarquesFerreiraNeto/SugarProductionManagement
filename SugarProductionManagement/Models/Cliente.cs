@@ -3,7 +3,7 @@ using SugarProductionManagement.Models.ValidationsModels.Pessoas;
 using System.ComponentModel.DataAnnotations;
 
 namespace SugarProductionManagement.Models {
-    public class Fornecedor : Endereco {
+    public class Cliente : Endereco {
 
         public int Id { get; set; }
 

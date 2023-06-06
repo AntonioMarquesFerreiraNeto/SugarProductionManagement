@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SugarProductionManagement.Data;
 
@@ -10,9 +11,10 @@ using SugarProductionManagement.Data;
 namespace SugarProductionManagement.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    partial class BancoContextModelSnapshot : ModelSnapshot
+    [Migration("20230606040309_safra")]
+    partial class safra
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -159,18 +161,11 @@ namespace SugarProductionManagement.Migrations
                     b.Property<string>("CodSafra")
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime?>("DataAberturaSafra")
-                        .IsRequired()
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime?>("DataFechamentoSafra")
+                    b.Property<DateTime?>("DataSafra")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("StatusSafra")
                         .HasColumnType("int");
-
-                    b.Property<string>("YearSafra")
-                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 

@@ -3,17 +3,17 @@ using SugarProductionManagement.Models;
 using SugarProductionManagement.Models.Enums;
 
 namespace SugarProductionManagement.Repository {
-    public class FornecedorRepository : IFornecedorRepository {
+    public class ClienteRepository : IClienteRepository {
 
         private BancoContext _bancoContext;
 
-        public FornecedorRepository(BancoContext bancoContext) {
+        public ClienteRepository(BancoContext bancoContext) {
             _bancoContext = bancoContext;
         }
 
-        public Fornecedor Ativar(Fornecedor fornecedor) {
+        public Cliente Ativar(Cliente fornecedor) {
             try {
-                Fornecedor fornecedorDB = GetFornecedorById(fornecedor.Id);
+                Cliente fornecedorDB = GetFornecedorById(fornecedor.Id);
                 if (fornecedorDB == null) throw new Exception("Desculpe, houve algum conflito interno!");
                 fornecedorDB.Status = FornecedorStatus.Ativo;
                 _bancoContext.Fornecedor.Update(fornecedorDB);
@@ -25,7 +25,7 @@ namespace SugarProductionManagement.Repository {
             }
         }
 
-        public Fornecedor Create(Fornecedor fornecedor) {
+        public Cliente Create(Cliente fornecedor) {
             try {
                 _bancoContext.Fornecedor.Add(fornecedor);
                 _bancoContext.SaveChanges();
@@ -36,21 +36,21 @@ namespace SugarProductionManagement.Repository {
             }
         }
 
-        public List<Fornecedor> GetFornecedorAtivosAll() {
+        public List<Cliente> GetFornecedorAtivosAll() {
             return _bancoContext.Fornecedor.Where(x => x.Status == FornecedorStatus.Ativo).ToList();
         }
 
-        public Fornecedor GetFornecedorById(int id) {
+        public Cliente GetFornecedorById(int id) {
             return _bancoContext.Fornecedor.FirstOrDefault(x => x.Id == id);
         }
 
-        public List<Fornecedor> GetFornecedorInativosAll() {
+        public List<Cliente> GetFornecedorInativosAll() {
             return _bancoContext.Fornecedor.Where(x => x.Status == FornecedorStatus.Inativo).ToList();
         }
 
-        public Fornecedor Inativar(Fornecedor fornecedor) {
+        public Cliente Inativar(Cliente fornecedor) {
             try {
-                Fornecedor fornecedorDB = GetFornecedorById(fornecedor.Id);
+                Cliente fornecedorDB = GetFornecedorById(fornecedor.Id);
                 if(fornecedorDB == null) throw new Exception("Desculpe, houve algum conflito interno!");
                 fornecedorDB.Status = FornecedorStatus.Inativo;
                 _bancoContext.Fornecedor.Update(fornecedorDB);
@@ -62,9 +62,9 @@ namespace SugarProductionManagement.Repository {
             }
         }
 
-        public Fornecedor Update(Fornecedor fornecedor) {
+        public Cliente Update(Cliente fornecedor) {
             try {
-                Fornecedor fornecedorDB = GetFornecedorById(fornecedor.Id);
+                Cliente fornecedorDB = GetFornecedorById(fornecedor.Id);
                 if (fornecedorDB == null) throw new Exception("Desculpe, houve algum conflito interno!");
 
                 fornecedorDB.NomeFantasia = fornecedor.NomeFantasia;

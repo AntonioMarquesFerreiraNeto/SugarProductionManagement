@@ -68,8 +68,20 @@
     .trash:hover {
         color: darkred;
     }
-@media(max-width: 600px){
-    .container-button{
+
+.disabled {
+    cursor: no-drop;
+    font-size: 10pt;
+    margin: 5px;
+    color: rgb(128, 128, 128);
+}
+
+    .disabled :hover {
+        color: rgb(128, 128, 128);
+    }
+
+@media(max-width: 600px) {
+    .container-button {
         justify-content: center;
         align-content: center;
         align-items: center;

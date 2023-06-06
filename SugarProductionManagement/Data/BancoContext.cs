@@ -7,6 +7,7 @@ namespace SugarProductionManagement.Data {
 
         }
         public DbSet<Funcionario> Funcionario { get; set; }
-        public DbSet<Fornecedor> Fornecedor { get; set; } 
+        public DbSet<Cliente> Fornecedor { get; set; } 
+        public DbSet<Safra> Safra { get; set; }
     }
 }

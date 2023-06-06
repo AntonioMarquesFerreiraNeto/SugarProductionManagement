@@ -5,20 +5,20 @@ using SugarProductionManagement.Repository;
 namespace SugarProductionManagement.Controllers {
     public class FornecedorController : Controller {
 
-        private readonly IFornecedorRepository _repository;
+        private readonly IClienteRepository _repository;
 
-        public FornecedorController(IFornecedorRepository repository) {
+        public FornecedorController(IClienteRepository repository) {
             _repository = repository;
         }
 
         public IActionResult Index() {
             ViewData["Title"] = "Fornecedores";
-            List<Fornecedor> fornecedores = _repository.GetFornecedorAtivosAll();
+            List<Cliente> fornecedores = _repository.GetFornecedorAtivosAll();
             return View(fornecedores);
         }
         public IActionResult Inativos() {
             ViewData["Title"] = "Fornecedores";
-            List<Fornecedor> fornecedores = _repository.GetFornecedorInativosAll();
+            List<Cliente> fornecedores = _repository.GetFornecedorInativosAll();
             return View("Index", fornecedores);
         }
 
@@ -28,7 +28,7 @@ namespace SugarProductionManagement.Controllers {
             return View();
         }
         [HttpPost]
-        public IActionResult CreateFornecedor(Fornecedor fornecedor) {
+        public IActionResult CreateFornecedor(Cliente fornecedor) {
             ViewData["Title"] = "Novo fornecedor";
             try {
                 if (ModelState.IsValid) {
@@ -46,7 +46,7 @@ namespace SugarProductionManagement.Controllers {
 
         public IActionResult EditFornecedor(int id) {
             ViewData["Title"] = "Editar fornecedor";
-            Fornecedor fornecedor = _repository.GetFornecedorById(id);
+            Cliente fornecedor = _repository.GetFornecedorById(id);
             if (fornecedor == null) {
                 TempData["Error"] = "Desculpe, registro não encontrado!";
                 return RedirectToAction("Index");
@@ -54,7 +54,7 @@ namespace SugarProductionManagement.Controllers {
             return View(fornecedor);
         }
         [HttpPost]
-        public IActionResult EditFornecedor(Fornecedor fornecedor) {
+        public IActionResult EditFornecedor(Cliente fornecedor) {
             ViewData["Title"] = "Editar fornecedor";
             try {
                 if (ModelState.IsValid) {
@@ -72,7 +72,7 @@ namespace SugarProductionManagement.Controllers {
 
         public IActionResult InativarFornecedor(int id) {
             ViewData["Title"] = "Inativar fornecedor";
-            Fornecedor fornecedor = _repository.GetFornecedorById(id);
+            Cliente fornecedor = _repository.GetFornecedorById(id);
             if (fornecedor == null) {
                 TempData["Error"] = "Desculpe, registro não encontrado!";
                 return RedirectToAction("Index");
@@ -80,7 +80,7 @@ namespace SugarProductionManagement.Controllers {
             return View(fornecedor);
         }
         [HttpPost]
-        public IActionResult InativarFornecedor(Fornecedor fornecedor) {
+        public IActionResult InativarFornecedor(Cliente fornecedor) {
             ViewData["Title"] = "Inativar fornecedor";
             try {
                 _repository.Inativar(fornecedor);
@@ -95,7 +95,7 @@ namespace SugarProductionManagement.Controllers {
 
         public IActionResult AtivarFornecedor(int id) {
             ViewData["Title"] = "Ativar fornecedor";
-            Fornecedor fornecedor = _repository.GetFornecedorById(id);
+            Cliente fornecedor = _repository.GetFornecedorById(id);
             if (fornecedor == null) {
                 TempData["Error"] = "Desculpe, registro não encontrado!";
                 return RedirectToAction("Index");
@@ -103,7 +103,7 @@ namespace SugarProductionManagement.Controllers {
             return View(fornecedor);
         }
         [HttpPost]
-        public IActionResult AtivarFornecedor(Fornecedor fornecedor) {
+        public IActionResult AtivarFornecedor(Cliente fornecedor) {
             ViewData["Title"] = "Ativar fornecedor";
             try {
                 _repository.Ativar(fornecedor);

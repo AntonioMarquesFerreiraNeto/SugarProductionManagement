@@ -1,4 +1,4 @@
-﻿@model Fornecedor
+﻿@model Cliente
 <link rel="stylesheet" href="~/css/funcionario.css" />
 <link rel="stylesheet" href="~/css/formulario.css" />
 <link rel="stylesheet" href="~/css/inativar.css" />
@@ -17,7 +17,7 @@
 }
 <div class="container-funci">
     <div class="container-title">
-        <h1 class="title"><i class="fa fa-user-gear"></i> Ativar funcionário</h1>
+        <h1 class="title"><i class="fa fa-user-gear"></i> Ativar cliente</h1>
     </div>
     <form class="flex-container" asp-action="AtivarFornecedor" asp-controller="Fornecedor">
         <input type="hidden" asp-for="Id">
@@ -29,7 +29,7 @@
                 </span>
             </div>
             <input type="text" class="form-control" id="inputNomeFantasia"
-                   placeholder="Informe o nome fantasia do cliente." maxlength="60" asp-for="NomeFantasia">
+                   placeholder="Informe o nome fantasia do cliente." maxlength="60" asp-for="NomeFantasia" readonly>
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.NomeFantasia)
@@ -44,7 +44,7 @@
             </div>
             <input type="text" class="form-control" id="inputRasaoSocial"
                    placeholder="Informe a razão social do cliente." maxlength="60"
-                   asp-for="RazaoSocial">
+                   asp-for="RazaoSocial" readonly>
             <div class="error-message">
                 <small>@Html.ValidationMessageFor(x => x.RazaoSocial)</small>
             </div>
@@ -57,7 +57,7 @@
             </div>
             <input type="text" class="form-control" id="inputCnpj"
                    placeholder="Informe o CNPJ do cliente." maxlength="14"
-                   onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="Cnpj">
+                   onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="Cnpj" readonly>
             <div class="error-message">
                 <small>@Html.ValidationMessageFor(x => x.Cnpj)</small>
             </div>
@@ -70,7 +70,7 @@
             </div>
             <input type="text" class="form-control" id="inputInscriEsta"
                    placeholder="Informe a inscrição estadual do cliente." maxlength="14"
-                   onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="InscricaoEstadual">
+                   onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="InscricaoEstadual" readonly>
             <div class="error-message">
                 <small>@Html.ValidationMessageFor(x => x.InscricaoEstadual)</small>
             </div>
@@ -83,7 +83,7 @@
             </div>
             <input type="text" class="form-control" id="inputInscriMuni"
                    placeholder="Informe a inscrição municipal do cliente."
-                   maxlength="14" onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="InscricaoMunicipal">
+                   maxlength="14" onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="InscricaoMunicipal" readonly>
             <div class="error-message">
                 <small>@Html.ValidationMessageFor(x => x.InscricaoMunicipal)</small>
             </div>

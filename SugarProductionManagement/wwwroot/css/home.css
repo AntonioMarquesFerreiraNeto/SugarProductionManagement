@@ -1,5 +1,4 @@
-﻿@import url(https://fonts.googleapis.com/css?family=Raleway);
-.alert {
+﻿.alert {
     position: absolute;
     top: 70px;
     right: 19px;
@@ -74,7 +73,6 @@ html, body {
 }
 
 * {
-    font-family: "Raleway";
     box-sizing: border-box;
 }
 

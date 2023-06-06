@@ -1,10 +1,11 @@
-﻿form{
+﻿form {
     margin: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
 .col-md-6 {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -12,15 +13,29 @@
     flex-basis: 500px;
     flex-grow: 1;
 }
+
 .form-control {
     height: 40px;
 }
+
+.input-group{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .error-message small {
     position: absolute;
     font-size: 9pt;
     top: 36.5px;
     right: 0px;
     color: orangered;
+}
+
+.error-message p {
+    position: absolute;
+    font-size: 12pt;
+    right: 10px;
+    top: 8px;
 }
 
 .position-text small {
@@ -48,7 +63,7 @@ input:focus {
     box-shadow: 0 0 0 0 !important;
 }
 /*botão Login*/
-.container-botoes{
+.container-botoes {
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;

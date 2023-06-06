@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="~/css/funcionario.css">
 <link rel="stylesheet" href="~/css/datatable.css" />
 
-@model List<Cliente>
+@model List<Safra>
 @using SugarProductionManagement.Models.Enums
 <!--HTML da página-->
 @if (TempData["Sucesso"] != null) {
@@ -19,63 +19,57 @@
     </div>
 }
 <div class="container-funci">
-    @if (Model.Any(x => x.Status == FornecedorStatus.Ativo)) {
-        <div class="container-title">
-            <h1 class="title"><i class="fa fa-users-gear"></i> Clientes ativos</h1>
-        </div>
-    }
-    else if (Model.Any(x => x.Status == FornecedorStatus.Inativo)) {
-        <div class="container-title">
-            <h1 class="title" style="color: red;"><i class="fa fa-users-gear"></i> Clientes inativos</h1>
-        </div>
-    }
-    else {
-        <div class="container-title">
-            <h1 class="title"><i class="fa fa-users-gear"></i> Clientes</h1>
-        </div>
-    }
+    <div class="container-title">
+        <h1 class="title"><i class="fa fa-chart-line"></i> Safras</h1>
+    </div>
     <div class="container-button">
         <div>
-            <a class="btn button" asp-action="Index" asp-controller="Fornecedor">Ativos</a>
-            <a class="btn button" asp-action="Inativos" asp-controller="Fornecedor">Inativos</a>
         </div>
-        <div><a class="btn button" asp-action="CreateFornecedor" asp-controller="Fornecedor"><i class="fa fa-plus"></i> Cliente</a></div>
+        <div><a class="btn button" asp-action="NewSafra" asp-controller="Safra"><i class="fa fa-plus"></i> Safra</a></div>
     </div>
-    <table id="table-fornecedor" class="table shadow-sm p-3 mb-5 bg-white rounded">
+    <table id="table-funcionario" class="table shadow-sm p-3 mb-5 bg-white rounded">
         <thead>
             <tr>
                 <th style="font-size: 9pt;" scope="col">Id</th>
-                <th style="font-size: 9pt;" scope="col">Nome</th>
-                <th style="font-size: 9pt;" scope="col">Telefone</th>
-                <th style="font-size: 9pt;" scope="col">Cidade</th>
-                <th style="font-size: 9pt;" scope="col">Opção</th>
+                <th style="font-size: 9pt;" scope="col">Cod. safra</th>
+                <th style="font-size: 9pt;" scope="col">Data de abertura</th>
+                <th style="font-size: 9pt;" scope="col">Data de fechamento</th>
+                <th style="font-size: 9pt;" scope="col">Safra</th>
+                <th style="font-size: 9pt;" scope="col">Status</th>
+                <th style="font-size: 9pt;" scope="col">Opções</th>
             </tr>
         </thead>
         <tbody>
             @if (Model.Count != 0) {
-                @foreach (var fornecedor in Model) {
+                @foreach (var safra in Model) {
                     <tr class="row-hover">
-                        <td scope="row">@fornecedor.Id</td>
-                        <td>@fornecedor.RazaoSocial</td>
-                        <td>@fornecedor.Tel</td>
-                        <td>@fornecedor.Cidade</td>
-                        @if (fornecedor.Status == FornecedorStatus.Ativo) {
-                            <td>
-                                <a class="edit" asp-action="EditFornecedor" asp-controller="Fornecedor" asp-route-id="@fornecedor.Id"><i class="fa fa-edit"></i></a>
-                                <a class="trash" asp-action="InativarFornecedor" asp-controller="Fornecedor" asp-route-id="@fornecedor.Id"><i class="fa fa-trash-alt"></i></a>
-                            </td>
+                        <td scope="row">@safra.Id</td>
+                        <td>@safra.CodSafra</td>
+                        <td>@safra.ReturnDataAberturaSafra()</td>
+                        @if (safra.DataFechamentoSafra == null) {
+                            <td>Não possui</td>
                         }
                         else {
-                            <td>
-                                <a class="edit" asp-action="AtivarFornecedor" asp-controller="Fornecedor" asp-route-id="@fornecedor.Id"><i class="fa fa-user-gear"></i></a>
-                            </td>
+                            <td>@safra.ReturnDataFechamentoSafra()</td>
                         }
+                        <td>@safra.YearSafra</td>
+                        <td>@safra.ReturnStatusSafra()</td>
+                        <td>
+                            @if (safra.StatusSafra != StatusSafra.Fechado) {
+                                <a class="edit" asp-action="FecharSafra" asp-route-id="@safra.Id"><i class="fa fa-sliders"></i></a>
+                                <a class="trash" asp-action="DeletarSafra" asp-route-id="@safra.Id"><i class="fa fa-trash-alt"></i></a>
+                            }
+                            else {
+                                <a class="disabled"><i class="fa fa-sliders"></i></a>
+                                <a class="disabled"><i class="fa fa-trash-alt"></i></a>
+                            }
+                        </td>
                     </tr>
                 }
             }
             else {
                 <tr class="row-hover">
-                    <td colspan="5">Nenhum registro encontrado.</td>
+                    <td colspan="7">Nenhum registro encontrado.</td>
                 </tr>
             }
         </tbody>
@@ -87,7 +81,7 @@
 @section Scripts{
     <script>
         $(document).ready(function () {
-            $('#table-fornecedor').DataTable({
+            $('#table-funcionario').DataTable({
                 "ordering": true,
                 "paging": true,
                 "searching": true,

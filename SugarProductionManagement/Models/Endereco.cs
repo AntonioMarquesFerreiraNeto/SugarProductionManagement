@@ -12,7 +12,7 @@ namespace SugarProductionManagement.Models {
 
         [Required(ErrorMessage = "Campo obrigatório!")]
         [MinLength(2, ErrorMessage = "Campo inválido!")]
-        public string? ComplementoResidencial { get; set; }
+        public string?  ComplementoResidencial { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório!")]
         [MinLength(2, ErrorMessage = "Campo inválido!")]
