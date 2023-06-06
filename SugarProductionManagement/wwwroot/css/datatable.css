@@ -7,7 +7,6 @@
 .table {
     font-family: Arial;
     border-radius: 5px;
-
 }
 thead {
     padding: 10px;
@@ -29,6 +28,7 @@ td{
 }
 
 .dataTables_filter label {
+    margin-bottom: -1px;
     z-index: 0;
     font-family: "Raleway";
     display: flex;

@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SugarProductionManagement.Filter;
 using SugarProductionManagement.Models;
 using SugarProductionManagement.Repository;
 
 namespace SugarProductionManagement.Controllers {
+
+    [PagUserAutenticado]
     public class FornecedorController : Controller {
 
         private readonly IClienteRepository _repository;

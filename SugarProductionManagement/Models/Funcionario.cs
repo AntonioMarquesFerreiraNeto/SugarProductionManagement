@@ -1,6 +1,7 @@
 ﻿using SugarProductionManagement.Models.Enums;
 using SugarProductionManagement.Models.ValidationsModels.Pessoas;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace SugarProductionManagement.Models {
     public class Funcionario : Endereco {
@@ -34,5 +35,19 @@ namespace SugarProductionManagement.Models {
 
         [Required (ErrorMessage = "Campo obrigatório!")]
         public Departamento? Departamento { get; set; }
+
+        public string? Senha { get; set; }
+
+
+        public void SetSenhaUser() {
+            Random rdn = new Random();
+            string caixaCaracteres = "qwertyuiopasdfghjklzxcvbnm123456789" + "qwertyuiopasdfghjklzxcvbnm".ToUpper();    
+            StringBuilder senha = new StringBuilder();
+            for (int c = 0; c < 16; c ++) {
+                int indiceSenha = rdn.Next(0, caixaCaracteres.Length - 1);
+                senha.Append(caixaCaracteres[indiceSenha]);
+            }
+            Senha = senha.ToString();
+        }
     }
 }

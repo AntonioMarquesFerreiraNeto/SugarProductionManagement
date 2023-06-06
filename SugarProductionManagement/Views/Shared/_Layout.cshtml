@@ -1,44 +1,41 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" name="descreption" content="Artigos - tecnologia da informação">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Sugar Production Management</title>
+    <title>Auth - SugarProject</title>
+    <!--Colocando a imagem icone do título.-->
+    <link rel="icon" href="_css/_imagens/techsolutions.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" crossorigin="anonymous">
+    <!-- Css específico da página-->
     <link rel="icon" href="~/css/imagens/iconsSugar.png">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/home.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SugarProductionManagement.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/SugarProductionManagement.styles.css" />
 </head>
 <body>
     <section class="top-nav">
-        <div>
-            Sugar Production Management &copy;
-        </div>
-        <input id="menu-toggle" type="checkbox" />
-        <label class='menu-button-container' for="menu-toggle">
-            <div class='menu-button'></div>
-        </label>
-        <ul class="menu">
-            <li>
-                <a class="link-menu" asp-action="Index" asp-controller="Home">Home</a>
-            </li>
-            <li><a class="link-menu" asp-action="Index" asp-controller="Funcionario">Funcionários</a></li>
-            <li><a class="link-menu" asp-action="Index" asp-controller="Fornecedor">Clientes</a></li>
-            <li>
-                <a class="link-menu" asp-action="Index" asp-controller="Safra">Safras</a>
-            </li>
-
-        </ul>
+        @await Component.InvokeAsync("Menu")
     </section>
     <main class="main-class">
         @RenderBody()
     </main>
-    <script src="~/js/bootstrap.min.js"></script>
+
     <script src="~/js/jquery.min.js"></script>
-    <script src="~/js/main.js"></script>
     <script src="~/js/popper.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+    <script src="~/js/main.js"></script>
     <script src="~/js/site.js"></script>
     <script src="~/js/datatables.min.js"></script>
     <script src="~/js/Pre-Louding.js"></script>

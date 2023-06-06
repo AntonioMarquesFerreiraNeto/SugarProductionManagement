@@ -19,7 +19,7 @@ namespace SugarProductionManagement.Migrations
                 .HasAnnotation("ProductVersion", "6.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("SugarProductionManagement.Models.Fornecedor", b =>
+            modelBuilder.Entity("SugarProductionManagement.Models.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -135,6 +135,9 @@ namespace SugarProductionManagement.Migrations
 
                     b.Property<string>("Rg")
                         .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Senha")
                         .HasColumnType("longtext");
 
                     b.Property<int>("Status")

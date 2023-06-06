@@ -1,0 +1,291 @@
+﻿@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap');
+body {
+    background-image: url(imagens/BackLogin.PNG);
+}
+
+.alert {
+    position: absolute;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    top: 19px;
+    height: 46px;
+    min-width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 11pt;
+}
+
+.close-alert {
+    font-size: 10pt;
+    position: absolute;
+    border-radius: 100%;
+    top: -13px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    color: white;
+    transition: 0.5s;
+}
+
+.alert-success {
+    color: white;
+    font-size: 11pt;
+    background-color: rgb(52, 174, 41);
+    border: 1px solid rgb(52, 174, 41);
+}
+
+.sucesso {
+    background-color: rgb(0, 100, 0);
+    border: 1px solid rgb(0, 100, 0);
+}
+
+    .sucesso:hover {
+        background-color: rgb(0, 81, 0);
+        border: 1px solid rgb(0, 81, 0);
+    }
+
+.alert-danger {
+    color: white;
+    font-size: 11pt;
+    background-color: rgb(255, 90, 90);
+    border: 1px solid rgb(255, 90, 90);
+}
+
+.erro {
+    color: white;
+    background-color: rgb(216, 40, 40);
+    border: 1px solid rgb(216, 40, 40);
+}
+
+    .erro:hover {
+        color: white;
+        background-color: rgb(178, 42, 11);
+        border: 1px solid rgb(178, 42, 11);
+    }
+
+
+#cabecalho {
+    display: none;
+    opacity: 0;
+}
+
+#InformationAndLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.error-message small {
+    position: absolute;
+    top: 35px;
+    right: 0px;
+    font-size: 9pt;
+    color: rgb(255, 94, 0);
+}
+
+.card {
+    height: 340px;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 10px;
+    background-color: #38291dff !important;
+    box-shadow: 1px 1px 1px #00000090;
+}
+
+.form-control {
+    height: 40px;
+    margin-top: 5px;
+}
+
+.input-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.error-message small {
+    position: absolute;
+    font-size: 9pt;
+    top: 39.7px;
+    right: 0px;
+    color: orangered;
+}
+
+.error-message p {
+    position: absolute;
+    font-size: 12pt;
+    right: 10px;
+    top: 8px;
+}
+
+.position-text small {
+    position: absolute;
+    font-size: 9pt;
+    top: 133px;
+    right: 14px;
+    color: rgb(255, 94, 0);
+}
+/*Caixa de entrada de usuário*/
+.input-group-prepend span {
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 0px;
+    border-end-start-radius: 5px;
+    border-start-start-radius: 5px;
+    margin-left: 0px;
+    background-color: #4b1f01;
+    color: rgb(255, 255, 255);
+    border: 0 !important;
+}
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.card-header h3 {
+    color: #ffffffdc;
+}
+
+.card1 {
+    height: 360px;
+}
+
+/*Caixa de lembrar de mim*/
+.remember {
+    color: #ffffffdc;
+}
+
+    .remember input {
+        width: 20px;
+        height: 20px;
+        margin-left: 15px;
+        margin-right: 5px;
+    }
+/*botão Login*/
+.login_btn {
+    margin-top: 10px;
+    color: #ffffff;
+    background-color: orangered;
+    width: 100%;
+    font-size: 10pt;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+    .login_btn:hover {
+        color: #000000;
+        background-color: #ffffff;
+    }
+
+.links {
+    color: #ffffffdc;
+}
+
+    .links a {
+        margin-left: 4px;
+    }
+
+@media (min-width: 100px) {
+    .card {
+        width: 80%;
+    }
+
+    .card1 {
+        opacity: 0;
+        display: none;
+        margin-top: auto;
+        margin-bottom: 40px;
+        padding: 10px;
+        width: 100%;
+        border-radius: 5px;
+        background-color: #1c1c1ce9 !important;
+        box-shadow: 1px 1px 1px #00000090;
+        transition: 1s;
+    }
+
+    #avisoP {
+        color: rgba(255, 255, 255, 0.856);
+        text-align: justify;
+        margin-top: 20px;
+        margin-left: 20px;
+        text-shadow: 1px 1px 1px #020011e2;
+    }
+
+    #facePagment {
+        text-decoration: none;
+    }
+
+        #facePagment:hover {
+            text-decoration: underline #330000;
+        }
+
+    .menu {
+        background-color: #131629ee;
+        border-radius: 20px;
+        margin-left: 5px;
+    }
+
+    #section-campeo {
+        margin-top: 15%;
+        padding-top: 5%;
+        height: 46em;
+        background-color: rgb(22, 22, 22) !important;
+    }
+
+    .textAB {
+        color: #ffffffdc;
+        margin: auto;
+        width: 90%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: rgb(44, 44, 44) !important;
+        border-radius: 10px;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 576px) {
+    #section-campeo {
+        margin-top: 15%;
+        padding-top: 5%;
+        height: 41em;
+        background-color: rgb(22, 22, 22) !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .card {
+        width: 390px;
+    }
+    /* background do menu transparente.*/
+    .menu {
+        background-color: #07001f00;
+    }
+}
+
+@media (min-width: 902px) {
+    .textAB {
+        color: #ffffffdc;
+        margin: auto;
+        width: 45%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        background-color: rgb(44, 44, 44) !important;
+        border-radius: 10px;
+        padding: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #section-campeo {
+        margin-top: 15%;
+        padding-top: 5%;
+        height: 36em;
+        background-color: rgb(22, 22, 22) !important;
+    }
+}

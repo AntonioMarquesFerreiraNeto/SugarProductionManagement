@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "K6p2x+gHESdzMtNH2ShkLg07qSB3mXJE/ppcQnsKEf0=",
+  "Hash": "+kQ/xZkdIN7FXOltMHwfDanLTFSj2seW25LEQCv2bZI=",
   "Source": "SugarProductionManagement",
   "BasePath": "_content/SugarProductionManagement",
   "Mode": "Default",
@@ -119,6 +119,23 @@
       "OriginalItemSpec": "wwwroot\\css\\home.css"
     },
     {
+      "Identity": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\css\\imagens\\BackLogin.PNG",
+      "SourceId": "SugarProductionManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\",
+      "BasePath": "_content/SugarProductionManagement",
+      "RelativePath": "css/imagens/BackLogin.PNG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\imagens\\BackLogin.PNG"
+    },
+    {
       "Identity": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\css\\imagens\\iconsSugar.png",
       "SourceId": "SugarProductionManagement",
       "SourceType": "Discovered",
@@ -151,6 +168,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\inativar.css"
+    },
+    {
+      "Identity": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\css\\logar.css",
+      "SourceId": "SugarProductionManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\",
+      "BasePath": "_content/SugarProductionManagement",
+      "RelativePath": "css/logar.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\logar.css"
+    },
+    {
+      "Identity": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\css\\menu.css",
+      "SourceId": "SugarProductionManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\",
+      "BasePath": "_content/SugarProductionManagement",
+      "RelativePath": "css/menu.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\menu.css"
     },
     {
       "Identity": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\css\\site.css",

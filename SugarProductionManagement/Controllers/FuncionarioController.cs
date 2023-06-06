@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SugarProductionManagement.Filter;
 using SugarProductionManagement.Models;
 using SugarProductionManagement.Repository;
 using System.CodeDom.Compiler;
 
 namespace SugarProductionManagement.Controllers {
+
+    [PagUserAutenticado]
     public class FuncionarioController : Controller {
 
         private readonly IFuncionarioRepository _funcionarioRepository;

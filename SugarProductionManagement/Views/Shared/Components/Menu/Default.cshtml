@@ -1,0 +1,52 @@
+﻿@model Funcionario
+@{
+    string[] nameParts = Model.Name!.Split(' ')!;
+    string firstName = nameParts?.FirstOrDefault()!;
+    string lastName = nameParts?.Skip(1).FirstOrDefault()!;
+}
+<link rel="stylesheet" href="~/css/menu.css">
+<input id="menu-toggle" type="checkbox" />
+<label class='menu-button-container' for="menu-toggle">
+    <div class='menu-button'></div>
+</label>
+<div class="text-format">
+    Sugar Production Management &copy;
+</div>
+<ul class="menu">
+    <li class="nav-item">
+        <a class="item link-menu" asp-action="Index" asp-controller="Home">Home</a>
+    </li>
+    <li>
+        <a class="item link-menu" asp-action="Index" asp-controller="Safra">Safras</a>
+    </li>
+    <li>
+        <a class="item link-menu" asp-action="Index" asp-controller="Fornecedor">Clientes</a>
+    </li>
+    <li>
+        <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Funcionários</a>
+    </li>
+    <li>
+        <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Produção</a>
+    </li>
+    <li>
+        <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Vendas</a>
+    </li>
+    <li>
+        <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Invetário</a>
+    </li>
+    <li>
+        <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Saída</a>
+    </li>
+    <li>
+        <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Produto</a>
+    </li>
+</ul>
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-user-gear"></i> @firstName @lastName
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" asp-action="EditFuncionario" asp-controller="Funcionario" asp-route-id="@Model.Id">Consultar</a></li>
+        <li><a class="dropdown-item" asp-action="Sair" asp-controller="Logar">Sair</a></li>
+    </ul>
+</div>

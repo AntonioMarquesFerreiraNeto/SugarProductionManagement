@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SugarProductionManagement.Filter;
 using SugarProductionManagement.Models;
 using SugarProductionManagement.Repository;
 
 namespace SugarProductionManagement.Controllers {
+
+    [PagUserAutenticado]
     public class SafraController : Controller {
 
         private readonly ISafraRepository _safraRepository;

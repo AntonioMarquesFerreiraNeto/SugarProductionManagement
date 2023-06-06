@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SugarProductionManagement.Data;
+using SugarProductionManagement.Helpers;
 using SugarProductionManagement.Repository;
 
 namespace SugarProductionManagement {
@@ -20,7 +21,14 @@ namespace SugarProductionManagement {
             builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
             builder.Services.AddScoped<ISafraRepository, SafraRepository>();
 
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddScoped<ISection, Section>();
+            builder.Services.AddScoped<IEmail, Email>();
 
+            builder.Services.AddSession(o => {
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential = true;
+            });
 
             var app = builder.Build();
 
@@ -32,15 +40,18 @@ namespace SugarProductionManagement {
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseAuthorization();
 
+            app.UseSession();
+
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Logar}/{action=Index}/{id?}");
 
             app.Run();
         }

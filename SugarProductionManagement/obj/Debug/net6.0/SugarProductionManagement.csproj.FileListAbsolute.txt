@@ -37,3 +37,4 @@ C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement\
 C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement\bin\Debug\net6.0\MySqlConnector.dll
 C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement\obj\Debug\net6.0\SugarProductionManagement.csproj.CopyComplete
+C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement\bin\Debug\net6.0\Newtonsoft.Json.dll

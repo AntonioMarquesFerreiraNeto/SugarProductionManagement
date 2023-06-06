@@ -60,6 +60,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/anton/source/repos/SugarProductionManagement/SugarProductionManagement/Views/Logar/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nYXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/anton/source/repos/SugarProductionManagement/SugarProductionManagement/Views/Safra/DeletarSafra.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FmcmFcRGVsZXRhclNhZnJhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -76,8 +80,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FmcmFcTmV3U2FmcmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/anton/source/repos/SugarProductionManagement/SugarProductionManagement/Views/Shared/Components/Menu/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWVudVxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/anton/source/repos/SugarProductionManagement/SugarProductionManagement/Views/Shared/_Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9FcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/anton/source/repos/SugarProductionManagement/SugarProductionManagement/Views/Shared/_LayoutNoConnection.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROb0Nvbm5lY3Rpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/anton/source/repos/SugarProductionManagement/SugarProductionManagement/Views/_ViewImports.cshtml]

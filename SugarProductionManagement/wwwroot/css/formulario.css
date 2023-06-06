@@ -13,7 +13,13 @@
     flex-basis: 500px;
     flex-grow: 1;
 }
-
+.col-md-12 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    flex-basis: 1000px;
+    flex-grow: 1;
+}
 .form-control {
     height: 40px;
 }
@@ -27,14 +33,14 @@
     position: absolute;
     font-size: 9pt;
     top: 36.5px;
-    right: 0px;
+    right: 13px;
     color: orangered;
 }
 
 .error-message p {
     position: absolute;
     font-size: 12pt;
-    right: 10px;
+    right: 27px;
     top: 8px;
 }
 
