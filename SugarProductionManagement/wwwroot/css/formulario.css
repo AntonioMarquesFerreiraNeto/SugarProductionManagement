@@ -13,12 +13,12 @@
     flex-grow: 1;
 }
 .form-control {
-    height: 30px;
+    height: 40px;
 }
 .error-message small {
     position: absolute;
     font-size: 9pt;
-    top: 28px;
+    top: 36.5px;
     right: 0px;
     color: orangered;
 }
@@ -33,7 +33,7 @@
 /*Caixa de entrada de usuário*/
 .input-group-prepend span {
     width: 40px;
-    height: 30px;
+    height: 40px;
     border-radius: 0px;
     border-end-start-radius: 5px;
     border-start-start-radius: 5px;

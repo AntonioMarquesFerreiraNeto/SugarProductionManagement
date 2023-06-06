@@ -1,6 +1,6 @@
 ﻿@model Funcionario
-<link rel="stylesheet" href="~/css/funcionario.css"/>
-<link rel="stylesheet" href="~/css/formulario.css"/>
+<link rel="stylesheet" href="~/css/funcionario.css" />
+<link rel="stylesheet" href="~/css/formulario.css" />
 
 @if (TempData["Sucesso"] != null) {
     <div class="alert alert-success" role="alert">
@@ -15,10 +15,30 @@
     </div>
 }
 <div class="container-funci">
-	<div class="container-title">
-		<h1 class="title"><i class="fa fa-user-gear"></i> Novo funcionário</h1>
-	</div>
-	<form class="flex-container" asp-action="CreateFuncionario" asp-controller="Funcionario">
+    <div class="container-title">
+        <h1 class="title"><i class="fa fa-user-gear"></i> Novo funcionário</h1>
+    </div>
+    <form class="flex-container" asp-action="CreateFuncionario" asp-controller="Funcionario">
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa-sharp fa-regular fa-building"></i></span>
+            </div>
+            <select asp-for="Departamento" class="form-control">
+                <option value="">Informe o departamento do funcionário.</option>
+                <optgroup>
+                    <option value="0">Administração</option>
+                    <option value="1">Estoque</option>
+                    <option value="2">Vendas</option>
+                    <option value="3">Produção</option>
+                    <option value="4">Carregamento</option>
+                </optgroup>
+            </select>
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.Departamento)
+                </small>
+            </div>
+        </div>
         <div class="input-group form-group col-md-6">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -45,7 +65,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-address-card"></i></span>
             </div>
-            <input type="text" class="form-control" asp-for="Rg" placeholder="informe o RG.">
+            <input type="text" class="form-control" asp-for="Rg" placeholder="informe o RG." maxlength="11">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.Rg)
@@ -56,7 +76,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-address-card"></i></span>
             </div>
-            <input type="text" class="form-control" onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="Cpf" placeholder="informe o CPF.">
+            <input type="text" class="form-control" maxlength="11" onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" asp-for="Cpf" placeholder="informe o CPF.">
             <div class="error-message">
                 <small>
                     @Html.ValidationMessageFor(x => x.Cpf)
@@ -155,5 +175,5 @@
             <a class="btn voltar-btn" asp-action="Index" asp-controller="Funcionario">Voltar</a>
             <input type="submit" value="Salvar" class="btn submit_btn">
         </div>
-	</form>
+    </form>
 </div>

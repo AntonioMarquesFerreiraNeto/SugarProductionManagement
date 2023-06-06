@@ -31,5 +31,8 @@ namespace SugarProductionManagement.Models {
         public DateTime? DataNascimento { get; set; }
 
         public FuncionarioStatus Status { get; set; }
+
+        [Required (ErrorMessage = "Campo obrigatório!")]
+        public Departamento? Departamento { get; set; }
     }
 }

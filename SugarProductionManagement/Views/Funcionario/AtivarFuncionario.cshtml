@@ -23,6 +23,24 @@
         <input type="hidden" asp-for="Id">
         <div class="input-group form-group col-md-6">
             <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa-sharp fa-regular fa-building"></i></span>
+            </div>
+            <select asp-for="Departamento" class="form-control" disabled>
+                <option value="">Informe o departamento do funcionário.</option>
+                <option value="0">Administração</option>
+                <option value="1">Estoque</option>
+                <option value="2">Vendas</option>
+                <option value="3">Produção</option>
+                <option value="4">Carregamento</option>
+            </select>
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.Departamento)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
             <input type="text" class="form-control" asp-for="Name" readonly placeholder="informe o nome.">

@@ -68,6 +68,7 @@ namespace SugarProductionManagement.Repository {
                 funcionarioDB.Bairro = funcionario.Bairro;
                 funcionarioDB.Cidade = funcionario.Cidade;
                 funcionarioDB.Estado = funcionario.Estado;
+                funcionarioDB.Departamento = funcionario.Departamento;
 
                 _bancoContext.Funcionario.Update(funcionarioDB);
                 _bancoContext.SaveChanges();

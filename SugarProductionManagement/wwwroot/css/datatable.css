@@ -21,6 +21,7 @@ th {
     font-size: 11pt;
 }
 td{
+    padding: 5px;
     text-align: center;
 }
 .dataTables_wrapper .no-footer {
