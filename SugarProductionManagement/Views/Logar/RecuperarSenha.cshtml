@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "_LayoutNoConnection";
 }
-@model Autenticar
+@model RecuperarSenha
 <section id="InformationAndLogin">
     @if (TempData["Sucesso"] != null) {
         <div class="alert alert-success" role="alert">
@@ -21,15 +21,15 @@
                 <div class="d-flex justify-content-center h-100">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Logar</h3>
+                            <h3>Recuperar senha</h3>
                         </div>
                         <div class="card-body">
-                            <form asp-action="Index" asp-controller="Logar" method="post">
+                            <form asp-action="RecuperarSenha" asp-controller="Logar" method="post">
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Informe seu CPF" asp-for="Cpf" maxlength="11">
+                                    <input type="text" class="form-control" placeholder="Informe seu CPF." asp-for="Cpf" maxlength="11">
                                     <div class="error-message">
                                         <small>
                                             @Html.ValidationMessageFor(x => x.Cpf)
@@ -40,22 +40,20 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-key"></i></span>
                                     </div>
-                                    <input type="password" class="form-control" placeholder="Informe sua senha" asp-for="Senha" id="senha">
+                                    <input type="email" class="form-control" placeholder="Informe seu e-mail." asp-for="Email" id="email">
                                     <div class="error-message">
                                         <small class="error-message">
-                                            @Html.ValidationMessageFor(x => x.Senha)
+                                            @Html.ValidationMessageFor(x => x.Email)
                                         </small>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" value="Logar" class="btn float-right login_btn">
+                                    <input type="submit" value="Recuperar" class="btn float-right login_btn">
                                 </div>
                             </form>
                         </div>
                         <div class="card-footer">
-                            <div class="d-flex justify-content-center">
-                                <a asp-action="RecuperarSenha" asp-controller="Logar" style="color: white;">Esqueceu sua senha?</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -63,3 +61,4 @@
         </div>
     </div>
 </section>
+

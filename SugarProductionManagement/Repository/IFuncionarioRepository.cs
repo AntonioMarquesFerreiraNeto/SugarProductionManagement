@@ -10,5 +10,6 @@ namespace SugarProductionManagement.Repository {
         public Funcionario Inativar(Funcionario funcionario);
         public Funcionario Ativar(Funcionario funcionario);
         public Funcionario ValidarCredenciais(Autenticar autenticar);
+        public Funcionario RecuperationAuth(RecuperarSenha recuperarSenha);
     }
 }

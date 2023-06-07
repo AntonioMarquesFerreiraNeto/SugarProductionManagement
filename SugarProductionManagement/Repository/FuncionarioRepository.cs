@@ -90,6 +90,15 @@ namespace SugarProductionManagement.Repository {
             return usuario;
         }
 
+        public Funcionario RecuperationAuth(RecuperarSenha recuperarSenha) {
+            Funcionario usuario = _bancoContext.Funcionario.FirstOrDefault(x => x.Email == recuperarSenha.Email && x.Cpf == recuperarSenha.Cpf && x.Status == FuncionarioStatus.Ativo) ?? throw new Exception("CPF ou e-mail inválido!");   
+            usuario.SetSenhaUser();
+            if (!EnviarSenha(usuario)) throw new Exception("Desculpe, não conseguimos enviar a senha!");
+            _bancoContext.Funcionario.Update(usuario);
+            _bancoContext.SaveChanges();
+            return usuario;
+        }
+
         public bool EnviarSenha(Funcionario funcionario) {
             string tema = "Sugar Production Management — Credencial para autenticação";
             string mensagem = $"Prezado {funcionario.Name}, <br><br>Gostaríamos de informar que uma senha foi gerada exclusivamente para você. " +

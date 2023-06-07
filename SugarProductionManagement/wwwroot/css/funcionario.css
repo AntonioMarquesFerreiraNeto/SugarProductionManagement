@@ -73,7 +73,7 @@
     cursor: no-drop;
     font-size: 10pt;
     margin: 5px;
-    color: rgb(128, 128, 128);
+    color: rgb(128, 128, 128) !important;
 }
 
     .disabled :hover {
