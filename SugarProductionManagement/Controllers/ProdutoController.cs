@@ -1,6 +1,5 @@
-﻿namespace SugarProductionManagement.Controllers
+﻿namespace SugarProductionManagement.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using SugarProductionManagement.Models;
 using SugarProductionManagement.Repository;
 

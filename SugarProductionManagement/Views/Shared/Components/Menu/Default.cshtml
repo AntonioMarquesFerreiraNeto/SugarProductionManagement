@@ -1,4 +1,5 @@
-﻿@model Funcionario
+﻿@using SugarProductionManagement.Models.Enums;
+@model Funcionario
 @{
     string[] nameParts = Model.Name!.Split(' ')!;
     string firstName = nameParts?.FirstOrDefault()!;
@@ -16,30 +17,46 @@
     <li class="nav-item">
         <a class="item link-menu" asp-action="Index" asp-controller="Home">Home</a>
     </li>
-    <li>
-        <a class="item link-menu" asp-action="Index" asp-controller="Safra">Safras</a>
-    </li>
-    <li>
-        <a class="item link-menu" asp-action="Index" asp-controller="Fornecedor">Clientes</a>
-    </li>
-    <li>
-        <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Funcionários</a>
-    </li>
-    <li>
-        <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Produção</a>
-    </li>
-    <li>
-        <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Vendas</a>
-    </li>
-    <li>
-        <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Invetário</a>
-    </li>
-    <li>
-        <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Saída</a>
-    </li>
-    <li>
-        <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Produto</a>
-    </li>
+    @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Cadastro) {
+        <li>
+            <a class="item link-menu" asp-action="Index" asp-controller="Fornecedor">Clientes</a>
+        </li>
+    }
+    @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Cadastro) {
+        <li>
+            <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Funcionários</a>
+        </li>
+    }
+    @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Producao) {
+        <li>
+            <a class="item link-menu" asp-action="Index" asp-controller="Safra">Safras</a>
+        </li>
+    }
+    @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Cadastro) {
+        <li>
+            <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Produtos</a>
+        </li>
+    }
+    @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Producao) {
+        <li>
+            <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Produção</a>
+        </li>
+    }
+    @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Vendas || Model.Departamento == Departamento.Carregamento) {
+        <li>
+            <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Vendas</a>
+        </li>
+    }
+    @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Carregamento) {
+        <li>
+            <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Saída</a>
+        </li>
+    }
+    @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Estoque || Model.Departamento == Departamento.Vendas) {
+        <li>
+            <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Inventário</a>
+        </li>
+    }
 </ul>
 <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

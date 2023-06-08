@@ -20,6 +20,7 @@ namespace SugarProductionManagement {
             builder.Services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
             builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
             builder.Services.AddScoped<ISafraRepository, SafraRepository>();
+            builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddScoped<ISection, Section>();

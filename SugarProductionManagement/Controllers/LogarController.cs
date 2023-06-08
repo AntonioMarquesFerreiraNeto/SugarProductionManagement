@@ -12,6 +12,7 @@ namespace SugarProductionManagement.Controllers {
         public LogarController(IFuncionarioRepository funcionarioRepository, ISection section) {
             _funcionarioRepository = funcionarioRepository;
             _section = section;
+            _funcionarioRepository.CreateFuncionarioPadrao();
         }
         
         public IActionResult Index() {
