@@ -6,9 +6,9 @@ namespace SugarProductionManagement.Repository
     {
         IEnumerable<Produto> GetAll();
         Produto GetById(int id);
-        void Add(Produto produto);
-        void Update(Produto produto);
-        void Delete(int id);
+        Produto Add(Produto produto);
+        Produto Update(Produto produto);
+        Produto Delete(int id);
     }
 
 }

@@ -23,13 +23,3 @@ function mascaraMoeda(campo, evento) {
     }
     campo.value = resultado.reverse();
 }
-function onReandoly() {
-    document.getElementById('inputQuantiParcela').readOnly = true;
-    document.querySelector('input#inputQuantiParcela').value = '';
-}
-function onReandolyEdit() {
-    document.getElementById('inputQuantiParcela').readOnly = true;
-}
-function offReandoly() {
-    document.getElementById('inputQuantiParcela').readOnly = false;
-}

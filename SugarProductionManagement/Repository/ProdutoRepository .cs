@@ -1,50 +1,63 @@
-﻿using SugarProductionManagement.Models;
+﻿using SugarProductionManagement.Data;
+using SugarProductionManagement.Models;
 
 namespace SugarProductionManagement.Repository
 {
     public class ProdutoRepository : IProdutoRepository
     {
-        private List<Produto> _produtos;
+        private readonly BancoContext _bancoContext;
 
-        public ProdutoRepository()
+        public ProdutoRepository(BancoContext bancoContext)
         {
-            _produtos = new List<Produto>();
+            _bancoContext = bancoContext;
         }
 
         public IEnumerable<Produto> GetAll()
         {
-            return _produtos;
+            return _bancoContext.Produtos.ToList();
         }
 
         public Produto GetById(int id)
         {
-            return _produtos.FirstOrDefault(p => p.Id == id);
+            return _bancoContext.Produtos.FirstOrDefault(p => p.Id == id) ?? throw new Exception("Desculpe, nenhum registro encontrado!");
         }
 
-        public void Add(Produto produto)
+        public Produto Add(Produto produto)
         {
-            produto.Id = _produtos.Count + 1;
-            _produtos.Add(produto);
-        }
-
-        public void Update(Produto produto)
-        {
-            var existingProduto = _produtos.FirstOrDefault(p => p.Id == produto.Id);
-            if (existingProduto != null)
+            try
             {
-                existingProduto.Nome = produto.Nome;
-                existingProduto.Descricao = produto.Descricao;
-                existingProduto.Preco = produto.Preco;
+                _bancoContext.Produtos.Add(produto);
+                _bancoContext.SaveChanges();
+                return produto;
+            }
+            catch (Exception error)
+            {
+                throw new Exception(error.Message);
             }
         }
 
-        public void Delete(int id)
+        public Produto Update(Produto produto)
         {
-            var produto = _produtos.FirstOrDefault(p => p.Id == id);
-            if (produto != null)
+            try
             {
-                _produtos.Remove(produto);
+                var produtoDB = GetById(produto.Id);
+                produtoDB.Nome = produto.Nome;
+                produtoDB.Descricao = produto.Descricao;
+                produtoDB.Preco = produto.Preco;
+                _bancoContext.Update(produtoDB);
+                _bancoContext.SaveChanges();
+                return produto;
             }
+            catch (Exception error)
+            {
+                throw new Exception(error.Message);
+            }
+        }
+
+        public Produto Delete(int id)
+        {
+            var produto = GetById(id);
+            return null;
         }
     }
 

@@ -1,8 +1,10 @@
 ﻿namespace SugarProductionManagement.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using SugarProductionManagement.Filter;
 using SugarProductionManagement.Models;
 using SugarProductionManagement.Repository;
 
+[PagUserAutenticado]
 public class ProdutoController : Controller
 {
     private readonly IProdutoRepository _produtoRepository;
@@ -26,12 +28,20 @@ public class ProdutoController : Controller
     [HttpPost]
     public IActionResult Create(Produto produto)
     {
-        if (ModelState.IsValid)
+        try
         {
-            _produtoRepository.Add(produto);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _produtoRepository.Add(produto);
+                return RedirectToAction("Index");
+            }
+            return View(produto);
         }
-        return View(produto);
+        catch (Exception error)
+        {
+            TempData["Error"] = error.Message;
+            return View(produto);
+        }
     }
 
     public IActionResult Edit(int id)
