@@ -1,14 +1,13 @@
 ﻿using SugarProductionManagement.Models;
 
-namespace SugarProductionManagement.Repository
-{
-    public interface IProdutoRepository
-    {
-        IEnumerable<Produto> GetAll();
+namespace SugarProductionManagement.Repository {
+    public interface IProdutoRepository {
+        List<Produto> GetAllAtivos();
+        List<Produto> GetAllInativos();
         Produto GetById(int id);
-        void Add(Produto produto);
-        void Update(Produto produto);
-        void Delete(int id);
+        Produto Add(Produto produto);
+        Produto Update(Produto produto);
+        Produto Inativar(int id);
+        Produto Ativar(int id);
     }
-
 }

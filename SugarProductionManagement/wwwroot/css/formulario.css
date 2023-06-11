@@ -24,7 +24,16 @@
     height: 40px;
 }
 
-.input-group{
+.form-control2{
+    height: 120px;
+}
+.input-group-prepend2 span {
+    height: 120px;
+    background-color: #1f1f33;
+    color: white;
+}
+
+.input-group {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -36,7 +45,13 @@
     right: 13px;
     color: orangered;
 }
-
+.textarea small {
+    position: absolute;
+    font-size: 9pt;
+    top: 105.5px;
+    right: 13px;
+    color: orangered;
+}
 .error-message p {
     position: absolute;
     font-size: 12pt;

@@ -1,0 +1,128 @@
+﻿<!-- CSS personalizado -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="~/css/funcionario.css">
+<link rel="stylesheet" href="~/css/datatable.css" />
+
+@model List<Producao>
+@using SugarProductionManagement.Models.Enums
+<!--HTML da página-->
+@if (TempData["Sucesso"] != null) {
+    <div class="alert alert-success" role="alert">
+        @TempData["Sucesso"]
+        <button type="button" class="btn btn-danger btn-sm close-alert sucesso" aria-label="Close"> <i class="fa fa fa-xmark"></i> </button>
+    </div>
+}
+@if (TempData["Error"] != null) {
+    <div class="alert alert-danger" role="alert" style="margin-bottom: 3px;">
+        @TempData["Error"]
+        <button type="button" class="btn btn-danger btn-sm close-alert erro" aria-label="Close"> <i class="fa fa fa-xmark"></i> </button>
+    </div>
+}
+<div class="container-funci">
+    @if (Model.Any(x => x.Status == StatusProducao.Ativo)) {
+        <div class="container-title">
+            <h1 class="title"><i class="fa fa-cubes-stacked fa-bounce"></i> Entradas ativas</h1>
+        </div>
+    }
+    else if (Model.Any(x => x.Status == StatusProducao.Inativo)) {
+        <div class="container-title">
+            <h1 class="title" style="color: red;"><i class="fa fa-cubes-stacked fa-bounce"></i> Entradas inativas</h1>
+        </div>
+    }
+    else {
+        <div class="container-title">
+            <h1 class="title"><i class="fa fa-cubes-stacked fa-bounce"></i> Entradas</h1>
+        </div>
+    }
+    <div class="container-button">
+        <div>
+            <a class="btn button" asp-action="Index" asp-controller="Producao">Ativos</a>
+            <a class="btn button" asp-action="Inativos" asp-controller="Producao">Inativos</a>
+        </div>
+        <div><a class="btn button" asp-action="CreateProducao" asp-controller="Producao"><i class="fa fa-plus"></i> Produção</a></div>
+    </div>
+    <table id="table-funcionario" class="table shadow-sm p-3 mb-5 bg-white rounded">
+        <thead>
+            <tr>
+                <th style="font-size: 9pt;" scope="col">Id</th>
+                <th style="font-size: 9pt;" scope="col">Produto</th>
+                <th style="font-size: 9pt;" scope="col">Safra</th>
+                <th style="font-size: 9pt;" scope="col">Produção</th>
+                <th style="font-size: 9pt;" scope="col">Estoque</th>
+                <th style="font-size: 9pt;" scope="col">Lote</th>
+                <th style="font-size: 9pt;" scope="col">Data de produção</th>
+                <th style="font-size: 9pt;" scope="col">Data de validade</th>
+                <th style="font-size: 9pt;" scope="col">Opção</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count != 0) {
+                @foreach (var item in Model) {
+                    <tr class="row-hover">
+                        <td scope="row">@item.Id</td>
+                        <td>@item.Produto!.Nome</td>
+                        <td>Safra @item.Safra!.YearSafra</td>
+                        <td>@item.QtProduzida</td>
+                        <td>@item.QtEstoque</td>
+                        <td>@item.Lote</td>
+                        <td>@item.DataProducao!.Value.ToString("dd/MM/yyyy")</td>
+                        <td>@item.DataValidade!.Value.ToString("dd/MM/yyyy")</td>
+                        @if (item.Status == StatusProducao.Ativo) {
+                            <td>
+                                <a class="edit" asp-action="EditProducao" asp-controller="Producao" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
+                                <a class="trash" asp-action="Inativar" asp-controller="Producao" asp-route-id="@item.Id"><i class="fa fa-trash-alt"></i></a>
+                            </td>
+                        }
+                        else {
+                            <td>
+                                <a class="edit" asp-action="Ativar" asp-controller="Producao" asp-route-id="@item.Id"><i class="fa fa-cubes-stacked"></i></a>
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+            else {
+                <tr class="row-hover">
+                    <td colspan="9">Nenhum registro encontrado.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/js/datatables.min.js"></script>
+<script src="~/js/site.js"></script>
+<script src="~/js/jquery.min.js"></script>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#table-funcionario').DataTable({
+                "ordering": true,
+                "paging": true,
+                "searching": true,
+                "oLanguage": {
+                    "sEmptyTable": "Não existe registros no sistema.",
+                    "sInfo": "",
+                    "sInfoEmpty": "",
+                    "sInfoFiltered": "",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Sua pesquisa não encontrou nenhum registro correspondente.",
+                    "sSearch": "Pesquisar:  ",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+                }
+            });
+        });
+    </script>
+   }

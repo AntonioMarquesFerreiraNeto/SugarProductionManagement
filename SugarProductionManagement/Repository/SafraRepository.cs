@@ -58,5 +58,9 @@ namespace SugarProductionManagement.Repository {
         public List<Safra> GetAllSafras() {
             return _bancoContext.Safra.ToList();
         }
+
+        public List<Safra> GetSafrasAbertas() {
+            return _bancoContext.Safra.Where(x => x.StatusSafra == StatusSafra.Aberta).ToList();
+        }
     }
 }

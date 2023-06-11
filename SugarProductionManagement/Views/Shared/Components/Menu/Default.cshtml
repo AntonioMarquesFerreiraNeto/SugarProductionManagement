@@ -34,12 +34,12 @@
     }
     @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Cadastro) {
         <li>
-            <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Produtos</a>
+            <a class="item link-menu" asp-action="Index" asp-controller="Produto">Produtos</a>
         </li>
     }
     @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Producao) {
         <li>
-            <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Produção</a>
+            <a class="item link-menu" asp-action="Index" asp-controller="Producao">Produção</a>
         </li>
     }
     @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Vendas || Model.Departamento == Departamento.Carregamento) {
@@ -60,7 +60,7 @@
 </ul>
 <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fa fa-user-gear"></i> @firstName @lastName
+        <i class="fa fa-user-gear fa-shake"></i> @firstName @lastName
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li><a class="dropdown-item" asp-action="EditFuncionario" asp-controller="Funcionario" asp-route-id="@Model.Id">Consultar</a></li>

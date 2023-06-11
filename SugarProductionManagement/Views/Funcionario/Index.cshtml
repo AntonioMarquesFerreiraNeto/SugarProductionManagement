@@ -21,17 +21,17 @@
 <div class="container-funci">
     @if (Model.Any(x => x.Status == FuncionarioStatus.Ativo)) {
         <div class="container-title">
-            <h1 class="title"><i class="fa fa-users-gear"></i> Funcionários ativos</h1>
+            <h1 class="title"><i class="fa fa-users-gear fa-bounce"></i> Funcionários ativos</h1>
         </div>
     }
     else if (Model.Any(x => x.Status == FuncionarioStatus.Inativo)) {
         <div class="container-title">
-            <h1 class="title" style="color: red;"><i class="fa fa-users-gear"></i> Funcionários inativos</h1>
+            <h1 class="title" style="color: red;"><i class="fa fa-users-gear fa-bounce"></i> Funcionários inativos</h1>
         </div>
     }
     else {
         <div class="container-title">
-            <h1 class="title"><i class="fa fa-users-gear"></i> Funcionários</h1>
+            <h1 class="title"><i class="fa fa-users-gear fa-bounce"></i> Funcionários</h1>
         </div>
     }
     <div class="container-button">

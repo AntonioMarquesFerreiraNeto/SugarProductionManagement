@@ -153,6 +153,77 @@ namespace SugarProductionManagement.Migrations
                     b.ToTable("Funcionario");
                 });
 
+            modelBuilder.Entity("SugarProductionManagement.Models.Producao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DataProducao")
+                        .IsRequired()
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DataValidade")
+                        .IsRequired()
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Lote")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("ProdutoId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QtEstoque")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QtProduzida")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SafraId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.HasIndex("SafraId");
+
+                    b.ToTable("Producao");
+                });
+
+            modelBuilder.Entity("SugarProductionManagement.Models.Produto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal?>("Preco")
+                        .IsRequired()
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int>("ProdutoStatus")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Produtos");
+                });
+
             modelBuilder.Entity("SugarProductionManagement.Models.Safra", b =>
                 {
                     b.Property<int?>("Id")
@@ -178,6 +249,30 @@ namespace SugarProductionManagement.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Safra");
+                });
+
+            modelBuilder.Entity("SugarProductionManagement.Models.Producao", b =>
+                {
+                    b.HasOne("SugarProductionManagement.Models.Produto", "Produto")
+                        .WithMany("ListProducao")
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SugarProductionManagement.Models.Safra", "Safra")
+                        .WithMany()
+                        .HasForeignKey("SafraId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Produto");
+
+                    b.Navigation("Safra");
+                });
+
+            modelBuilder.Entity("SugarProductionManagement.Models.Produto", b =>
+                {
+                    b.Navigation("ListProducao");
                 });
 #pragma warning restore 612, 618
         }

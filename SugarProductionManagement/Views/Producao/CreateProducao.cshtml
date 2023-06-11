@@ -1,0 +1,107 @@
+﻿@model Producao
+<link rel="stylesheet" href="~/css/funcionario.css" />
+<link rel="stylesheet" href="~/css/formulario.css" />
+
+@if (TempData["Sucesso"] != null) {
+    <div class="alert alert-success" role="alert">
+        @TempData["Sucesso"]
+        <button type="button" class="btn btn-danger btn-sm close-alert sucesso" aria-label="Close"> <i class="fa fa fa-xmark"></i> </button>
+    </div>
+}
+@if (TempData["Error"] != null) {
+    <div class="alert alert-danger" role="alert" style="margin-bottom: 3px;">
+        @TempData["Error"]
+        <button type="button" class="btn btn-danger btn-sm close-alert erro" aria-label="Close"> <i class="fa fa fa-xmark"></i> </button>
+    </div>
+}
+<div class="container-funci">
+    <div class="container-title">
+        <h1 class="title"><i class="fa fa-cubes-stacked"></i> Nova entrada de produção</h1>
+    </div>
+    <form class="flex-container" asp-action="CreateProducao" asp-controller="Producao">
+        <div class="input-group form-group col-md-12">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa-sharp fa-regular fa-building"></i></span>
+            </div>
+            <select asp-for="ProdutoId" class="form-control">
+                <option value="">Informe o produto.</option>
+                <optgroup>
+                    @foreach (var item in Model.ListProdutos!) {
+                        <option value="@item.Id">@item.Nome</option>
+                    }
+                </optgroup>
+            </select>
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.ProdutoId)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-12">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa-sharp fa-regular fa-building"></i></span>
+            </div>
+            <select asp-for="SafraId" class="form-control">
+                <option value="">Informe a safra.</option>
+                <optgroup>
+                    @foreach (var item in Model.ListSafras!) {
+                        <option value="@item.Id">Safra @item.YearSafra</option>
+                    }
+                </optgroup>
+            </select>
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.SafraId)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="Lote" placeholder="informe o lote de produção.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.Lote)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="QtProduzida" placeholder="informe a quantidade produzida." onkeypress=" if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.QtProduzida)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-calendar-days"></i></span>
+            </div>
+            <input type="date" class="form-control" asp-for="DataProducao" placeholder="informe a data de produção.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.DataProducao)
+                </small>
+            </div>
+        </div>
+        <div class="input-group form-group col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-calendar-days"></i></span>
+            </div>
+            <input type="date" class="form-control" asp-for="DataValidade" placeholder="informe a data de validade.">
+            <div class="error-message">
+                <small>
+                    @Html.ValidationMessageFor(x => x.DataValidade)
+                </small>
+            </div>
+        </div>
+        <div class="form-group container-botoes col-md-12">
+            <a class="btn voltar-btn" asp-action="Index" asp-controller="Producao">Voltar</a>
+            <input type="submit" value="Salvar" class="btn submit_btn">
+        </div>
+    </form>
+</div>

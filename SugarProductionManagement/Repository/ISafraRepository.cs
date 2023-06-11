@@ -7,5 +7,6 @@ namespace SugarProductionManagement.Repository {
         public Safra GetSafraById(int? id);
         public Safra DeleteSafra(int? id);
         public List<Safra> GetAllSafras();
+        public List<Safra> GetSafrasAbertas();
     }
 }
