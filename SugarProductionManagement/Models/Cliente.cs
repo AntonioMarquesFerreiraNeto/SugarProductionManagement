@@ -40,6 +40,8 @@ namespace SugarProductionManagement.Models {
             return $"{Convert.ToUInt64(Cnpj): 00\\.000\\.000\\/0000-00}";
         }
 
+        public virtual List<Venda>? ListVendas { get; set; }
+
         public FornecedorStatus Status { get; set; }
     }
 }

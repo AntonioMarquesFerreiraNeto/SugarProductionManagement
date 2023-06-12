@@ -172,8 +172,7 @@ input:focus {
     color: #ffffff;
     background-color: orangered;
     width: 100%;
-    font-size: 13pt;
-    text-transform: uppercase;
+    font-size: 12pt;
     font-weight: bold;
     transition: 0.4s;
 }

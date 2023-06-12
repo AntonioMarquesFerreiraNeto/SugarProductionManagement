@@ -153,6 +153,42 @@ namespace SugarProductionManagement.Migrations
                     b.ToTable("Funcionario");
                 });
 
+            modelBuilder.Entity("SugarProductionManagement.Models.Inventario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DataDeInventario")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("DescricaoMotivo")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProducaoId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QtBaixa")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.HasIndex("ProducaoId");
+
+                    b.ToTable("Inventario");
+                });
+
             modelBuilder.Entity("SugarProductionManagement.Models.Producao", b =>
                 {
                     b.Property<int>("Id")
@@ -170,6 +206,9 @@ namespace SugarProductionManagement.Migrations
                     b.Property<string>("Lote")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<int?>("ProducaoId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("ProdutoId")
                         .IsRequired()
@@ -190,6 +229,8 @@ namespace SugarProductionManagement.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProducaoId");
 
                     b.HasIndex("ProdutoId");
 
@@ -251,8 +292,67 @@ namespace SugarProductionManagement.Migrations
                     b.ToTable("Safra");
                 });
 
+            modelBuilder.Entity("SugarProductionManagement.Models.Venda", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ClienteId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DataVenda")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProdutoId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QtVendida")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("VendasStatus")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.ToTable("Venda");
+                });
+
+            modelBuilder.Entity("SugarProductionManagement.Models.Inventario", b =>
+                {
+                    b.HasOne("SugarProductionManagement.Models.Funcionario", "Funcionario")
+                        .WithMany("ListInventario")
+                        .HasForeignKey("FuncionarioId");
+
+                    b.HasOne("SugarProductionManagement.Models.Producao", "Producao")
+                        .WithMany()
+                        .HasForeignKey("ProducaoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Funcionario");
+
+                    b.Navigation("Producao");
+                });
+
             modelBuilder.Entity("SugarProductionManagement.Models.Producao", b =>
                 {
+                    b.HasOne("SugarProductionManagement.Models.Producao", null)
+                        .WithMany("ListInventarios")
+                        .HasForeignKey("ProducaoId");
+
                     b.HasOne("SugarProductionManagement.Models.Produto", "Produto")
                         .WithMany("ListProducao")
                         .HasForeignKey("ProdutoId")
@@ -270,9 +370,53 @@ namespace SugarProductionManagement.Migrations
                     b.Navigation("Safra");
                 });
 
+            modelBuilder.Entity("SugarProductionManagement.Models.Venda", b =>
+                {
+                    b.HasOne("SugarProductionManagement.Models.Cliente", "Cliente")
+                        .WithMany("ListVendas")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SugarProductionManagement.Models.Funcionario", "Funcionario")
+                        .WithMany("ListVendas")
+                        .HasForeignKey("FuncionarioId");
+
+                    b.HasOne("SugarProductionManagement.Models.Produto", "Produto")
+                        .WithMany("ListVendas")
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Funcionario");
+
+                    b.Navigation("Produto");
+                });
+
+            modelBuilder.Entity("SugarProductionManagement.Models.Cliente", b =>
+                {
+                    b.Navigation("ListVendas");
+                });
+
+            modelBuilder.Entity("SugarProductionManagement.Models.Funcionario", b =>
+                {
+                    b.Navigation("ListInventario");
+
+                    b.Navigation("ListVendas");
+                });
+
+            modelBuilder.Entity("SugarProductionManagement.Models.Producao", b =>
+                {
+                    b.Navigation("ListInventarios");
+                });
+
             modelBuilder.Entity("SugarProductionManagement.Models.Produto", b =>
                 {
                     b.Navigation("ListProducao");
+
+                    b.Navigation("ListVendas");
                 });
 #pragma warning restore 612, 618
         }

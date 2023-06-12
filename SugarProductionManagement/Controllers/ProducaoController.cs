@@ -41,6 +41,11 @@ namespace SugarProductionManagement.Controllers {
             producao.ListSafras = _safraRepository.GetSafrasAbertas();
             try {
                 if (ModelState.IsValid) {
+                    Safra safra = _safraRepository.GetSafraById(producao.SafraId);
+                    if (producao.DataProducao!.Value < safra.DataAberturaSafra!.Value) {
+                        TempData["Error"] = "Data de produção não pode ser inferior a data da Safra!";
+                        return View(producao);
+                    }
                     if (producao.DataProducao > producao.DataValidade) {
                         TempData["Error"] = "Data de validade não pode ser inferior a data de produção!";
                         return View(producao);
@@ -52,7 +57,7 @@ namespace SugarProductionManagement.Controllers {
                 return View(producao);
             }
             catch (Exception error) {
-                TempData["Title"] = error.Message;
+                TempData["Error"] = error.Message;
                 return View(producao);
             }
         }
@@ -77,6 +82,11 @@ namespace SugarProductionManagement.Controllers {
             producao.ListSafras = _safraRepository.GetSafrasAbertas();
             try {
                 if (ModelState.IsValid) {
+                    Safra safra = _safraRepository.GetSafraById(producao.SafraId);
+                    if (producao.DataProducao!.Value < safra.DataAberturaSafra!.Value) {
+                        TempData["Error"] = "Data de produção não pode ser inferior a data da Safra!";
+                        return View(producao);
+                    }
                     if (producao.DataProducao > producao.DataValidade) {
                         TempData["Error"] = "Data de validade não pode ser inferior a data de produção!";
                         return View(producao);
@@ -88,7 +98,7 @@ namespace SugarProductionManagement.Controllers {
                 return View(producao);
             }
             catch (Exception error) {
-                TempData["Title"] = error.Message;
+                TempData["Error"] = error.Message;
                 return View(producao);
             }
         }

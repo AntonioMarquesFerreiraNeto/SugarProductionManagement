@@ -23,6 +23,7 @@ namespace SugarProductionManagement.Models
         public ProdutoStatus ProdutoStatus { get; set; }
 
         public virtual List<Producao>? ListProducao { get; set; }  
+        public virtual List<Venda>? ListVendas { get; set; }
 
         public string ReturnPrecoFormatado()
         {

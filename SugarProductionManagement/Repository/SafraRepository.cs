@@ -28,6 +28,8 @@ namespace SugarProductionManagement.Repository {
             try {
                 Safra safraDB = GetSafraById(id);
                 if (safraDB.StatusSafra == StatusSafra.Fechado) throw new Exception("Esta safra não pode ser deletada!");
+                bool temProducao = _bancoContext.Producao.Any(x => x.SafraId == id);
+                if (temProducao) throw new Exception("Safra possui entrada de produção!");
                 _bancoContext.Safra.Remove(safraDB);
                 _bancoContext.SaveChanges();
                 return safraDB;

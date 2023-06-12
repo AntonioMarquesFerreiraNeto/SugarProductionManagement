@@ -1,0 +1,118 @@
+﻿<!-- CSS personalizado -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="~/css/funcionario.css">
+<link rel="stylesheet" href="~/css/datatable.css" />
+
+@model List<Inventario>
+@using SugarProductionManagement.Models.Enums
+<!--HTML da página-->
+@if (TempData["Sucesso"] != null) {
+    <div class="alert alert-success" role="alert">
+        @TempData["Sucesso"]
+        <button type="button" class="btn btn-danger btn-sm close-alert sucesso" aria-label="Close"> <i class="fa fa fa-xmark"></i> </button>
+    </div>
+}
+@if (TempData["Error"] != null) {
+    <div class="alert alert-danger" role="alert" style="margin-bottom: 3px;">
+        @TempData["Error"]
+        <button type="button" class="btn btn-danger btn-sm close-alert erro" aria-label="Close"> <i class="fa fa fa-xmark"></i> </button>
+    </div>
+}
+<div class="container-funci">
+    @if (Model.Any(x => x.Status == InventarioStatus.Ativo)) {
+        <div class="container-title">
+            <h1 class="title"><i class="fa fa-handshake-angle fa-bounce"></i> Inventário</h1>
+        </div>
+    }
+    else {
+        <div class="container-title">
+            <h1 class="title" style="color: red;"><i class="fa fa-handshake-angle fa-bounce"></i> Inventário</h1>
+        </div>
+    }
+    <div class="container-button">
+        <div>
+            <a class="btn button" asp-action="Index" asp-controller="Inventario">Ativos</a>
+            <a class="btn button" asp-action="Inativos" asp-controller="Inventario">Inativos</a>
+        </div>
+        <div><a class="btn button" asp-action="NewInventario" asp-controller="Inventario"><i class="fa fa-plus"></i> Inventário</a></div>
+    </div>
+    <table id="table-funcionario" class="table shadow-sm p-3 mb-5 bg-white rounded">
+        <thead>
+            <tr>
+                <th style="font-size: 9pt;" scope="col">Id</th>
+                <th style="font-size: 9pt;" scope="col">Produto</th>
+                <th style="font-size: 9pt;" scope="col">Funcionário</th>
+                <th style="font-size: 9pt;" scope="col">Qt. baixa</th>
+                <th style="font-size: 9pt;" scope="col">Data de entrada</th>
+                <th style="font-size: 9pt;" scope="col">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count != 0) {
+                @foreach (var item in Model) {
+                    <tr class="row-hover">
+                        <td scope="row">@item.Id</td>
+                        <td>@item.Producao!.Produto!.Nome | Lote: @item.Producao!.Lote</td>
+                        <td>@item.Funcionario!.Name</td>
+                        <td>@item.QtBaixa</td>
+                        <td>@item.DataDeInventario!.Value.ToString("dd/MM/yyyy")</td>
+                        @if (item.Status != InventarioStatus.Inativo) {
+                            <td>
+                                <a class="edit" asp-action="Edit" asp-route-id="@item.Id" asp-controller="Inventario"><i class="fa fa-edit"></i></a>
+                                <a class="trash" asp-action="Inativar" asp-route-id="@item.Id" asp-controller="Inventario"><i class="fa fa-trash-alt"></i></a>
+                            </td>
+                        }
+                        else {
+                            <td>
+                                <a class="disabled"><i class="fa fa-sliders"></i></a>
+                            </td>
+                        }
+
+                    </tr>
+                }
+            }
+            else {
+                <tr class="row-hover">
+                    <td colspan="6">Nenhum registro encontrado.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/js/datatables.min.js"></script>
+<script src="~/js/site.js"></script>
+<script src="~/js/jquery.min.js"></script>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#table-funcionario').DataTable({
+                "ordering": true,
+                "paging": true,
+                "searching": true,
+                "oLanguage": {
+                    "sEmptyTable": "Não existe registros no sistema.",
+                    "sInfo": "",
+                    "sInfoEmpty": "",
+                    "sInfoFiltered": "",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Sua pesquisa não encontrou nenhum registro correspondente.",
+                    "sSearch": "Pesquisar:  ",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+                }
+            });
+        });
+    </script>
+   }

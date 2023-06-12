@@ -44,7 +44,7 @@
     }
     @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Vendas || Model.Departamento == Departamento.Carregamento) {
         <li>
-            <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Vendas</a>
+            <a class="item link-menu" asp-action="Index" asp-controller="Vendas">Vendas</a>
         </li>
     }
     @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Carregamento) {
@@ -54,7 +54,7 @@
     }
     @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Estoque || Model.Departamento == Departamento.Vendas) {
         <li>
-            <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Inventário</a>
+            <a class="item link-menu" asp-action="Index" asp-controller="Inventario">Inventário</a>
         </li>
     }
 </ul>

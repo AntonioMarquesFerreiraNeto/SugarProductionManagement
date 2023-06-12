@@ -27,6 +27,8 @@ namespace SugarProductionManagement.Models {
 
         public StatusProducao Status { get; set; }
 
+        public virtual List<Producao>? ListInventarios { get; set; }
+
         //Objetos relacionado.
         public Produto? Produto { get; set; }
         public Safra? Safra { get; set; }  

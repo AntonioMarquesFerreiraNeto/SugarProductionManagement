@@ -46,7 +46,7 @@
                 <option value="">Informe a safra.</option>
                 <optgroup>
                     @foreach (var item in Model.ListSafras!) {
-                        <option value="@item.Id">Safra @item.YearSafra</option>
+                        <option value="@item.Id">Safra @item.YearSafra | Data de abertura de safra: @item.ReturnDataAberturaSafra()</option>
                     }
                 </optgroup>
             </select>

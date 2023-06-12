@@ -22,6 +22,7 @@ namespace SugarProductionManagement.Repository {
 
         public Producao Create(Producao producao) {
             try {
+                if (producao.QtProduzida < 1) throw new Exception("Quantidade produzida inválida!");
                 producao.QtEstoque = producao.QtProduzida;
                 _bancoContext.Producao.Add(producao);
                 _bancoContext.SaveChanges();
@@ -67,6 +68,7 @@ namespace SugarProductionManagement.Repository {
 
         public Producao Update(Producao producao) {
             try {
+                if (producao.QtProduzida < 1) throw new Exception("Quantidade produzida inválida!");
                 Producao producaoDB = GetById(producao.Id);
                 //Adicionar validações para não deixar que seja realizado update de produção com vendas, saídas ou invetários.
                 producaoDB.ProdutoId = producao.ProdutoId;
