@@ -22,6 +22,7 @@ namespace SugarProductionManagement.Repository
         {
             try
             {
+                produto.QtEstoque = 0;
                 _bancoContext.Produtos.Add(produto);
                 _bancoContext.SaveChanges();
                 return produto;

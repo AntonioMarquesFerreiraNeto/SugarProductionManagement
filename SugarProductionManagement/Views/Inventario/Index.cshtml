@@ -34,7 +34,10 @@
             <a class="btn button" asp-action="Index" asp-controller="Inventario">Ativos</a>
             <a class="btn button" asp-action="Inativos" asp-controller="Inventario">Inativos</a>
         </div>
-        <div><a class="btn button" asp-action="NewInventario" asp-controller="Inventario"><i class="fa fa-plus"></i> Inventário</a></div>
+        <div>
+            <a class="btn button" href="#"><i class="fa fa-file-excel"></i> Gerar relatórios</a>
+            <a class="btn button" asp-action="NewInventario" asp-controller="Inventario"><i class="fa fa-plus"></i> Inventário</a>
+        </div>
     </div>
     <table id="table-funcionario" class="table shadow-sm p-3 mb-5 bg-white rounded">
         <thead>

@@ -39,7 +39,10 @@
             <a class="btn button" asp-action="Index" asp-controller="Produto">Ativos</a>
             <a class="btn button" asp-action="Inativos" asp-controller="Produto">Inativos</a>
         </div>
-        <div><a class="btn button" asp-action="Create" asp-controller="Produto"><i class="fa fa-plus"></i> Produtos</a></div>
+        <div>
+            <a class="btn button" href="#"><i class="fa fa-file-excel"></i> Gerar relatórios</a>
+            <a class="btn button" asp-action="Create" asp-controller="Produto"><i class="fa fa-plus"></i> Produtos</a>
+        </div>
     </div>
     <table id="table-funcionario" class="table shadow-sm p-3 mb-5 bg-white rounded">
         <thead>
@@ -47,6 +50,7 @@
                 <th style="font-size: 9pt;" scope="col">Id</th>
                 <th style="font-size: 9pt;" scope="col">Nome</th>
                 <th style="font-size: 9pt;" scope="col">Preço</th>
+                <th style="font-size: 9pt;" scope="col">Qt. estoque</th>
                 <th style="font-size: 9pt;" scope="col">Opção</th>
             </tr>
         </thead>
@@ -57,6 +61,7 @@
                         <td scope="row">@item.Id</td>
                         <td>@item.Nome</td>
                         <td>@item.ReturnPrecoFormatado()</td>
+                        <td>@item.QtEstoque</td>
                         @if (item.ProdutoStatus == ProdutoStatus.Ativo) {
                             <td>
                                 <a class="edit" asp-action="Edit" asp-controller="Produto" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
@@ -73,7 +78,7 @@
             }
             else {
                 <tr class="row-hover">
-                    <td colspan="4">Nenhum registro encontrado.</td>
+                    <td colspan="5">Nenhum registro encontrado.</td>
                 </tr>
             }
         </tbody>

@@ -33,9 +33,12 @@ namespace SugarProductionManagement.Repository {
         }
         public void BaixaEstoque(Inventario inventario) {
             Producao producaoDB = _bancoContext.Producao.FirstOrDefault(x => x.Id == inventario.ProducaoId!)! ?? throw new Exception("Desculpe, objeto não encontrado!");
+            Produto produtoDB = _bancoContext.Produtos.FirstOrDefault(x => x.Id == producaoDB.ProdutoId)!;
             if (producaoDB.QtEstoque == 0) throw new Exception("Desculpe, não possui esse tipo de produto em estoque para permitir inventário!");
             if (producaoDB.QtEstoque >= inventario.QtBaixa) {
                 producaoDB.QtEstoque = producaoDB.QtEstoque - inventario.QtBaixa;
+                produtoDB.QtEstoque = produtoDB.QtEstoque - inventario.QtBaixa;
+                _bancoContext.Produtos.Update(produtoDB);
                 _bancoContext.Producao.Update(producaoDB);
             }
             else {
@@ -71,7 +74,10 @@ namespace SugarProductionManagement.Repository {
         }
         public void AltaEstoque(int id, int qtBaixa) {
             Producao producao = _bancoContext.Producao.FirstOrDefault(x => x.Id == id)!;
+            Produto produtoDB = _bancoContext.Produtos.FirstOrDefault(x => x.Id == producao.ProdutoId)!;
             producao.QtEstoque = producao.QtEstoque + qtBaixa;
+            produtoDB.QtEstoque += qtBaixa;
+            _bancoContext.Produtos.Update(produtoDB);
             _bancoContext.Producao.Update(producao);
         }
 
@@ -97,15 +103,19 @@ namespace SugarProductionManagement.Repository {
         }
         public void BaixaOrAltaEstoque(Inventario inventario, Inventario inventarioDB) {
             Producao producaoDB = _bancoContext.Producao.FirstOrDefault(x => x.Id == inventarioDB.ProducaoId!)! ?? throw new Exception("Desculpe, objeto não encontrado!");
+            Produto produtoDB = _bancoContext.Produtos.FirstOrDefault(x => x.Id == producaoDB.ProdutoId)!;
             if (producaoDB.QtEstoque == 0) throw new Exception("Desculpe, não possui esse tipo de produto em estoque para permitir inventário!");
             if (producaoDB.QtEstoque >= inventario.QtBaixa) {
                 if (inventario.QtBaixa > inventarioDB.QtBaixa) {
                     producaoDB.QtEstoque = (producaoDB.QtEstoque + inventarioDB.QtBaixa) - inventario.QtBaixa;
+                    produtoDB.QtEstoque = -inventario.QtBaixa;
                 }
                 else {
                     int alta = inventarioDB.QtBaixa!.Value - inventario.QtBaixa.Value;
                     producaoDB.QtEstoque += alta;
+                    produtoDB.QtEstoque += inventario.QtBaixa;
                 }
+                _bancoContext.Produtos.Update(produtoDB);
                 _bancoContext.Producao.Update(producaoDB);
             }
             else {

@@ -1,5 +1,6 @@
 ﻿using SugarProductionManagement.Models.Enums;
 using SugarProductionManagement.Models.ValidationsModels.Produtos;
+using System.CodeDom.Compiler;
 using System.ComponentModel.DataAnnotations;
 
 namespace SugarProductionManagement.Models
@@ -21,6 +22,8 @@ namespace SugarProductionManagement.Models
         public decimal? Preco { get; set; }
 
         public ProdutoStatus ProdutoStatus { get; set; }
+
+        public int? QtEstoque { get; set; }
 
         public virtual List<Producao>? ListProducao { get; set; }  
         public virtual List<Venda>? ListVendas { get; set; }

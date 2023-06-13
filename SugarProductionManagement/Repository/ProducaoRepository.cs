@@ -2,6 +2,7 @@
 using SugarProductionManagement.Data;
 using SugarProductionManagement.Models;
 using SugarProductionManagement.Models.Enums;
+using System.Security.Cryptography.X509Certificates;
 
 namespace SugarProductionManagement.Repository {
     public class ProducaoRepository : IProducaoRepository {
@@ -23,6 +24,7 @@ namespace SugarProductionManagement.Repository {
         public Producao Create(Producao producao) {
             try {
                 if (producao.QtProduzida < 1) throw new Exception("Quantidade produzida inválida!");
+                AltaEstoqueProduto(producao);
                 producao.QtEstoque = producao.QtProduzida;
                 _bancoContext.Producao.Add(producao);
                 _bancoContext.SaveChanges();
@@ -31,6 +33,11 @@ namespace SugarProductionManagement.Repository {
             catch (Exception error) {
                 throw new Exception(error.Message);
             }
+        }
+        public void AltaEstoqueProduto(Producao producao) {
+            Produto produtoDB = _bancoContext.Produtos.FirstOrDefault(x => x.Id == producao.ProdutoId)!;
+            produtoDB.QtEstoque += producao.QtProduzida;
+            _bancoContext.Produtos.Update(produtoDB);
         }
 
         public Producao GetById(int id) {
@@ -70,6 +77,8 @@ namespace SugarProductionManagement.Repository {
             try {
                 if (producao.QtProduzida < 1) throw new Exception("Quantidade produzida inválida!");
                 Producao producaoDB = GetById(producao.Id);
+                if (_bancoContext.Inventario.Any(x => x.ProducaoId == producaoDB.Id)) throw new Exception("Produção possui inventários!");
+                if (producao.QtProduzida != producaoDB.QtProduzida) AltaOrBaixaEstoque(producao, producaoDB);
                 //Adicionar validações para não deixar que seja realizado update de produção com vendas, saídas ou invetários.
                 producaoDB.ProdutoId = producao.ProdutoId;
                 producaoDB.SafraId = producao.SafraId;
@@ -78,6 +87,7 @@ namespace SugarProductionManagement.Repository {
                 producaoDB.DataProducao = producao.DataProducao;
                 producaoDB.DataValidade = producao.DataValidade;
                 producaoDB.Lote = producao.Lote;
+
                 _bancoContext.Producao.Update(producaoDB);
                 _bancoContext.SaveChanges();
                 return producao;
@@ -85,6 +95,26 @@ namespace SugarProductionManagement.Repository {
             catch (Exception error) {
                 throw new Exception(error.Message);
             }
+        }
+        public void AltaOrBaixaEstoque(Producao producao, Producao producaoDB) {
+            Produto produtoDB = _bancoContext.Produtos.FirstOrDefault(x => x.Id == producao.ProdutoId)!;
+            int? QtEstoqueProduto = 0;
+            int? qtProdutos = 0;
+            List<Producao> lista = _bancoContext.Producao.Where(x => x.ProdutoId == produtoDB.Id).ToList();
+            foreach (var item in lista) {
+                if (produtoDB.Id != item.Id) {
+                    QtEstoqueProduto += item.QtProduzida;
+                }
+            }
+            if (producao.QtProduzida > producaoDB.QtProduzida) {
+                qtProdutos = producao.QtProduzida - producaoDB.QtProduzida;
+                produtoDB.QtEstoque = QtEstoqueProduto + qtProdutos;
+            }
+            else {
+                qtProdutos = producaoDB.QtProduzida - producao.QtProduzida;
+                produtoDB.QtEstoque = QtEstoqueProduto - qtProdutos;
+            }
+            _bancoContext.Produtos.Update(produtoDB);
         }
     }
 }
