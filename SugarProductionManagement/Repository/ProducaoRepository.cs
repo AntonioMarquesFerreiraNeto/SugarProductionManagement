@@ -67,6 +67,7 @@ namespace SugarProductionManagement.Repository {
 
         public Producao Inativar(int id) {
             Producao producao = GetById(id);
+            if (_bancoContext.Inventario.Any(x => x.ProducaoId == producao.Id)) throw new Exception("Produção possui inventários!");
             producao.Status = StatusProducao.Inativo;
             _bancoContext.Update(producao);
             _bancoContext.SaveChanges();

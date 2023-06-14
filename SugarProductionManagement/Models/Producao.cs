@@ -28,6 +28,7 @@ namespace SugarProductionManagement.Models {
         public StatusProducao Status { get; set; }
 
         public virtual List<Producao>? ListInventarios { get; set; }
+        public virtual List<Saida>? ListSaidas { get; set; }
 
         //Objetos relacionado.
         public Produto? Produto { get; set; }

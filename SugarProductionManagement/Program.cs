@@ -24,6 +24,7 @@ namespace SugarProductionManagement {
             builder.Services.AddScoped<IProducaoRepository, ProducaoRepository>();
             builder.Services.AddScoped<IVendaRepository, VendaRepository>();
             builder.Services.AddScoped<IInventarioRepository, InventarioRepository>();
+            builder.Services.AddScoped<ISaidaRepository, SaidaRepository>();
 
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddScoped<ISection, Section>();

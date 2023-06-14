@@ -263,6 +263,9 @@ namespace SugarProductionManagement.Migrations
                     b.Property<int?>("QtEstoque")
                         .HasColumnType("int");
 
+                    b.Property<int?>("QtReservada")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Produtos");
@@ -295,6 +298,51 @@ namespace SugarProductionManagement.Migrations
                     b.ToTable("Safra");
                 });
 
+            modelBuilder.Entity("SugarProductionManagement.Models.Saida", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CodCarregamento")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProducaoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProdutoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QtSaidaTotal")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SaidaStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("VendaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.HasIndex("ProducaoId");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.HasIndex("VendaId");
+
+                    b.ToTable("Saida");
+                });
+
             modelBuilder.Entity("SugarProductionManagement.Models.Venda", b =>
                 {
                     b.Property<int>("Id")
@@ -305,6 +353,9 @@ namespace SugarProductionManagement.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
+                    b.Property<string>("CodPedidoVenda")
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime?>("DataVenda")
                         .HasColumnType("datetime(6)");
 
@@ -313,6 +364,9 @@ namespace SugarProductionManagement.Migrations
 
                     b.Property<int?>("ProdutoId")
                         .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QtEntregue")
                         .HasColumnType("int");
 
                     b.Property<int?>("QtVendida")
@@ -331,6 +385,38 @@ namespace SugarProductionManagement.Migrations
                     b.HasIndex("ProdutoId");
 
                     b.ToTable("Venda");
+                });
+
+            modelBuilder.Entity("SugarProductionManagement.Models.VendaSaidas", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProducaoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QtEntregue")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QtSaidaLote")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SaidaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("VendaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProducaoId");
+
+                    b.HasIndex("SaidaId");
+
+                    b.HasIndex("VendaId");
+
+                    b.ToTable("VendaSaidas");
                 });
 
             modelBuilder.Entity("SugarProductionManagement.Models.Inventario", b =>
@@ -373,6 +459,37 @@ namespace SugarProductionManagement.Migrations
                     b.Navigation("Safra");
                 });
 
+            modelBuilder.Entity("SugarProductionManagement.Models.Saida", b =>
+                {
+                    b.HasOne("SugarProductionManagement.Models.Cliente", "Cliente")
+                        .WithMany("ListSaidas")
+                        .HasForeignKey("ClienteId");
+
+                    b.HasOne("SugarProductionManagement.Models.Funcionario", "Funcionario")
+                        .WithMany("ListSaidasLancadas")
+                        .HasForeignKey("FuncionarioId");
+
+                    b.HasOne("SugarProductionManagement.Models.Producao", null)
+                        .WithMany("ListSaidas")
+                        .HasForeignKey("ProducaoId");
+
+                    b.HasOne("SugarProductionManagement.Models.Produto", "Produto")
+                        .WithMany("ListSaidas")
+                        .HasForeignKey("ProdutoId");
+
+                    b.HasOne("SugarProductionManagement.Models.Venda", "Venda")
+                        .WithMany("ListSaidas")
+                        .HasForeignKey("VendaId");
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Funcionario");
+
+                    b.Navigation("Produto");
+
+                    b.Navigation("Venda");
+                });
+
             modelBuilder.Entity("SugarProductionManagement.Models.Venda", b =>
                 {
                     b.HasOne("SugarProductionManagement.Models.Cliente", "Cliente")
@@ -398,8 +515,29 @@ namespace SugarProductionManagement.Migrations
                     b.Navigation("Produto");
                 });
 
+            modelBuilder.Entity("SugarProductionManagement.Models.VendaSaidas", b =>
+                {
+                    b.HasOne("SugarProductionManagement.Models.Producao", "Producao")
+                        .WithMany()
+                        .HasForeignKey("ProducaoId");
+
+                    b.HasOne("SugarProductionManagement.Models.Saida", null)
+                        .WithMany("ListVendaSaidas")
+                        .HasForeignKey("SaidaId");
+
+                    b.HasOne("SugarProductionManagement.Models.Venda", "Venda")
+                        .WithMany()
+                        .HasForeignKey("VendaId");
+
+                    b.Navigation("Producao");
+
+                    b.Navigation("Venda");
+                });
+
             modelBuilder.Entity("SugarProductionManagement.Models.Cliente", b =>
                 {
+                    b.Navigation("ListSaidas");
+
                     b.Navigation("ListVendas");
                 });
 
@@ -407,19 +545,35 @@ namespace SugarProductionManagement.Migrations
                 {
                     b.Navigation("ListInventario");
 
+                    b.Navigation("ListSaidasLancadas");
+
                     b.Navigation("ListVendas");
                 });
 
             modelBuilder.Entity("SugarProductionManagement.Models.Producao", b =>
                 {
                     b.Navigation("ListInventarios");
+
+                    b.Navigation("ListSaidas");
                 });
 
             modelBuilder.Entity("SugarProductionManagement.Models.Produto", b =>
                 {
                     b.Navigation("ListProducao");
 
+                    b.Navigation("ListSaidas");
+
                     b.Navigation("ListVendas");
+                });
+
+            modelBuilder.Entity("SugarProductionManagement.Models.Saida", b =>
+                {
+                    b.Navigation("ListVendaSaidas");
+                });
+
+            modelBuilder.Entity("SugarProductionManagement.Models.Venda", b =>
+                {
+                    b.Navigation("ListSaidas");
                 });
 #pragma warning restore 612, 618
         }

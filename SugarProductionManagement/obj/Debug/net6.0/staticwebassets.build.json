@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+kQ/xZkdIN7FXOltMHwfDanLTFSj2seW25LEQCv2bZI=",
+  "Hash": "xjSDQZKd08Co15N4lUuEeg1jIUwh+Z4XVBKxw6o2oI0=",
   "Source": "SugarProductionManagement",
   "BasePath": "_content/SugarProductionManagement",
   "Mode": "Default",
@@ -238,6 +238,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\AddSaida.js",
+      "SourceId": "SugarProductionManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\",
+      "BasePath": "_content/SugarProductionManagement",
+      "RelativePath": "js/AddSaida.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\AddSaida.js"
+    },
+    {
       "Identity": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\all.js",
       "SourceId": "SugarProductionManagement",
       "SourceType": "Discovered",
@@ -304,23 +321,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\datatables.min.js"
-    },
-    {
-      "Identity": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\DeleteClientSelect.js",
-      "SourceId": "SugarProductionManagement",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\",
-      "BasePath": "_content/SugarProductionManagement",
-      "RelativePath": "js/DeleteClientSelect.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\DeleteClientSelect.js"
     },
     {
       "Identity": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\js\\fontawesome.js",

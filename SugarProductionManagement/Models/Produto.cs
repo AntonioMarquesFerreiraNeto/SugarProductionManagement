@@ -11,7 +11,7 @@ namespace SugarProductionManagement.Models
 
         [Required(ErrorMessage = "Campo obrigatório!")]
         public string? Nome { get; set; }
-       
+        
         [Required(ErrorMessage = "Campo obrigatório!")]
         [MinLength(20, ErrorMessage = "Campo inválido!")]
         public string? Descricao { get; set; }
@@ -25,8 +25,11 @@ namespace SugarProductionManagement.Models
 
         public int? QtEstoque { get; set; }
 
+        public int? QtReservada { get; set; }
+
         public virtual List<Producao>? ListProducao { get; set; }  
         public virtual List<Venda>? ListVendas { get; set; }
+        public virtual List<Saida>? ListSaidas { get; set; }
 
         public string ReturnPrecoFormatado()
         {

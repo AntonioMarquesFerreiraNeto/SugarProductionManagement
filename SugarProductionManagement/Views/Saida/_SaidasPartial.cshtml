@@ -1,0 +1,56 @@
+﻿@model List<VendaSaidas>
+<link rel="stylesheet" href="~/css/funcionario.css" />
+<link rel="stylesheet" href="~/css/formulario.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Qt informada</th>
+            <th scope="col">Lote de produção</th>
+            <th scope="col">Opção</th>
+        </tr>
+    </thead>
+    <tbody style="border: none;">
+        @if (Model.Count == 0) {
+            <tr>
+                <td colspan="3">Nenhuma saída foi selecionada!</td>
+            </tr>
+        }
+        else {
+            foreach (var item in Model) {
+                <tr class="row-hover">
+                    <td>@item.QtSaidaLote</td>
+                    <td>@item.Producao!.Lote</td>
+                    <td><a hre="#" class="trash remove-ajax" href="#" producao-id="@item.Producao.Id"><i class="fa fa-trash-alt"></i></a></td>
+                </tr>
+            }
+        }
+    </tbody>
+    @if (Model.Count != 0) {
+        <tfoot style="border: none;">
+            <tr style="border: none;">
+                <td colspan="3" style="border: none;">
+                    Quantidade total: @Model.Sum(x => x.QtSaidaLote)
+                </td>
+            </tr>
+        </tfoot>
+    }
+</table>
+<script>
+    $(document).ready(function () {
+        $('.remove-ajax').click(function () {
+            var producaoId = $(this).attr('producao-id');
+            console.log(producaoId)
+            $.ajax({
+                type: 'POST',
+                url: '/Saida/RemoveSaidaTemp/',
+                data: {
+                    id: producaoId
+                },
+                success: function (result) {
+                    $("#listSaidasSelects").html(result);
+                }
+            });
+        });
+    });
+</script>

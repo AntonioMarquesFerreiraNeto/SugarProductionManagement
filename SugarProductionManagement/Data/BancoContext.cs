@@ -14,6 +14,7 @@ namespace SugarProductionManagement.Data {
         public DbSet<Producao> Producao { get; set; }
         public DbSet<Venda> Venda { get; set; }
         public DbSet<Inventario> Inventario { get; set; }
+        public DbSet<Saida> Saida { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
 
@@ -25,6 +26,12 @@ namespace SugarProductionManagement.Data {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new MapInventario());
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new MapSaida());
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new MapVendaSaidas());
             base.OnModelCreating(modelBuilder);
 
 

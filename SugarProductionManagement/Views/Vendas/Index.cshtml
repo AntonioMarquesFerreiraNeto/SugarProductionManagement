@@ -43,10 +43,13 @@
         <thead>
             <tr>
                 <th style="font-size: 9pt;" scope="col">Id</th>
+                <th style="font-size: 9pt;" scope="col">Cod. pedido de vendas</th>
                 <th style="font-size: 9pt;" scope="col">Cliente</th>
                 <th style="font-size: 9pt;" scope="col">Produto</th>
                 <th style="font-size: 9pt;" scope="col">Funcionário</th>
-                <th style="font-size: 9pt;" scope="col">Qt. vendidas</th>
+                <th style="font-size: 9pt;" scope="col">Qt. vendida</th>
+                <th style="font-size: 9pt;" scope="col">Qt. entregue</th>
+                <th style="font-size: 9pt;" scope="col">Qt. entregar</th>
                 <th style="font-size: 9pt;" scope="col">Data de venda</th>
                 <th style="font-size: 9pt;" scope="col">Opções</th>
             </tr>
@@ -56,10 +59,13 @@
                 @foreach (var item in Model) {
                     <tr class="row-hover">
                         <td scope="row">@item.Id</td>
+                        <td>@item.CodPedidoVenda</td>
                         <td>@item.Cliente!.NomeFantasia</td>
                         <td>@item.Produto!.Nome</td>
                         <td>@item.Funcionario!.Name</td>
                         <td>@item.QtVendida</td>
+                        <td>@item.QtEntregue</td>
+                        <td>@item.ReturnQtEntregar()</td>
                         <td>@item.DataVenda!.Value.ToString("dd/MM/yyyy")</td>
                         @if (item.VendasStatus != VendasStatus.Inativo) {
                             <td>
@@ -78,7 +84,7 @@
             }
             else {
                 <tr class="row-hover">
-                    <td colspan="7">Nenhum registro encontrado.</td>
+                    <td colspan="10">Nenhum registro encontrado.</td>
                 </tr>
             }
         </tbody>

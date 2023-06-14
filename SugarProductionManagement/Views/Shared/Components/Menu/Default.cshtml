@@ -49,7 +49,7 @@
     }
     @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Carregamento) {
         <li>
-            <a class="item link-menu" asp-action="Index" asp-controller="Funcionario">Saída</a>
+            <a class="item link-menu" asp-action="Index" asp-controller="Saida">Saída</a>
         </li>
     }
     @if (Model.Departamento == Departamento.Administracao || Model.Departamento == Departamento.Estoque || Model.Departamento == Departamento.Vendas) {

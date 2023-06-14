@@ -13,6 +13,7 @@
     flex-basis: 500px;
     flex-grow: 1;
 }
+
 .col-md-12 {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -20,13 +21,15 @@
     flex-basis: 1000px;
     flex-grow: 1;
 }
+
 .form-control {
     height: 40px;
 }
 
-.form-control2{
+.form-control2 {
     height: 120px;
 }
+
 .input-group-prepend2 span {
     height: 120px;
     background-color: #1f1f33;
@@ -45,6 +48,7 @@
     right: 13px;
     color: orangered;
 }
+
 .textarea small {
     position: absolute;
     font-size: 9pt;
@@ -52,6 +56,7 @@
     right: 13px;
     color: orangered;
 }
+
 .error-message p {
     position: absolute;
     font-size: 12pt;
@@ -138,4 +143,76 @@ input:focus {
         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
         color: #ffff;
         background-color: darkred;
+    }
+
+.btn-plus {
+    background-color: rgb(6, 206, 16);
+    color: #ffffff;
+    border: none;
+    height: 40px;
+    min-width: 40px;
+    margin-left: 3px;
+    font-weight: normal;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+    .btn-plus:hover {
+        color: white;
+        background-color: darkgreen;
+    }
+
+.max-table{
+    max-height: 200px;
+    overflow-y: auto;
+}
+.table {
+    margin: 0;
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(177, 176, 176, 0.5);
+}
+
+    .table thead {
+        color: white;
+        background: linear-gradient(to left, #f46b45, #eea849);
+    }
+
+    .table th {
+        font-size: 10pt;
+        text-align: center;
+    }
+
+    .table tr {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .table .row-hover:hover {
+        background-color: #f7f7f7f7;
+    }
+
+    .table td {
+        margin: 0;
+        padding: 10px 0;
+        font-size: 10pt;
+        text-align: center;
+    }
+
+td {
+    overflow-wrap: break-word
+}
+/* Estilos do rodapé */
+/* Estilos do rodapé */
+tfoot {
+    background-color: #e9e9e9; /* Cor de fundo diferente para o rodapé */
+    font-weight: bold;
+}
+
+    tfoot td {
+        padding: 12px;
+        text-align: center;
+        border: none; /* Remover todas as bordas das células */
     }

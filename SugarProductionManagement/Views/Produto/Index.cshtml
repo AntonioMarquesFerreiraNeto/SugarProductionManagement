@@ -51,6 +51,7 @@
                 <th style="font-size: 9pt;" scope="col">Nome</th>
                 <th style="font-size: 9pt;" scope="col">Preço</th>
                 <th style="font-size: 9pt;" scope="col">Qt. estoque</th>
+                <th style="font-size: 9pt;" scope="col">Qt. reservada</th>
                 <th style="font-size: 9pt;" scope="col">Opção</th>
             </tr>
         </thead>
@@ -62,6 +63,7 @@
                         <td>@item.Nome</td>
                         <td>@item.ReturnPrecoFormatado()</td>
                         <td>@item.QtEstoque</td>
+                        <td>@item.QtReservada</td>
                         @if (item.ProdutoStatus == ProdutoStatus.Ativo) {
                             <td>
                                 <a class="edit" asp-action="Edit" asp-controller="Produto" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>

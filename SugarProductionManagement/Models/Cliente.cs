@@ -41,6 +41,7 @@ namespace SugarProductionManagement.Models {
         }
 
         public virtual List<Venda>? ListVendas { get; set; }
+        public virtual List<Saida>? ListSaidas { get; set; }
 
         public FornecedorStatus Status { get; set; }
     }

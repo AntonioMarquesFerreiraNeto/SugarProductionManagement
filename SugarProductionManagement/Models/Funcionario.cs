@@ -40,6 +40,7 @@ namespace SugarProductionManagement.Models {
 
         public virtual List<Venda>? ListVendas { get; set; }
         public virtual List<Inventario>? ListInventario { get; set; }
+        public virtual List<Saida>? ListSaidasLancadas { get; set; }
 
         public void SetSenhaUser() {
             Random rdn = new Random();
