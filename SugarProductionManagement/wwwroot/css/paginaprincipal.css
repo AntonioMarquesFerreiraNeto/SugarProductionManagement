@@ -1,0 +1,52 @@
+﻿
+.row {
+    margin-top: 10px;
+}
+
+.upercase {
+    color: white;
+    text-transform: uppercase;
+}
+
+.altura-minima-container {
+    min-height: 210px;
+}
+
+.card {
+    margin: auto;
+    background-color: transparent;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(177, 176, 176, 0.5);
+}
+
+.card-title {
+    font-family: 'Numans', sans-serif;
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #2b2b2bba;
+}
+
+.font {
+    font-size: 14pt;
+    font-weight: normal;
+    color: darkslategray;
+}
+
+.font2 {
+    font-size: 14pt;
+    font-weight: normal;
+    color: darkslategray;
+}
+
+.font-min {
+    padding: 0px;
+    font-size: 10.5pt;
+    color: darkslategray
+}
+
+.card-text {
+    text-align: justify;
+    font-size: 11pt;
+}

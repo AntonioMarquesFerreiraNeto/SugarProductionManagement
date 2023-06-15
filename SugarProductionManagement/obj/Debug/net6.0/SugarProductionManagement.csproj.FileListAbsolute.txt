@@ -544,3 +544,10 @@ C:\Users\vinir\source\repos\SugarProductionManagement\SugarProductionManagement\
 C:\Users\vinir\source\repos\SugarProductionManagement\SugarProductionManagement\obj\Debug\net6.0\SugarProductionManagement.pdb
 C:\Users\vinir\source\repos\SugarProductionManagement\SugarProductionManagement\obj\Debug\net6.0\SugarProductionManagement.genruntimeconfig.cache
 C:\Users\vinir\source\repos\SugarProductionManagement\SugarProductionManagement\obj\Debug\net6.0\ref\SugarProductionManagement.dll
+C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement\bin\Debug\net6.0\ClosedXML.dll
+C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement\bin\Debug\net6.0\DocumentFormat.OpenXml.dll
+C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement\bin\Debug\net6.0\ExcelNumberFormat.dll
+C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement\bin\Debug\net6.0\Irony.dll
+C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement\bin\Debug\net6.0\SixLabors.Fonts.dll
+C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement\bin\Debug\net6.0\System.IO.Packaging.dll
+C:\Users\anton\source\repos\SugarProductionManagement\SugarProductionManagement\bin\Debug\net6.0\XLParser.dll

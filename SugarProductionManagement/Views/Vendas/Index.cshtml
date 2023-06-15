@@ -24,7 +24,7 @@
             <h1 class="title"><i class="fa fa-handshake-angle fa-bounce"></i> Vendas</h1>
         </div>
     }
-    else{
+    else {
         <div class="container-title">
             <h1 class="title" style="color: red;"><i class="fa fa-handshake-angle fa-bounce"></i> Vendas</h1>
         </div>
@@ -35,9 +35,14 @@
             <a class="btn button" asp-action="Inativos" asp-controller="Vendas">Inativos</a>
         </div>
         <div>
-            <a class="btn button" href="#"><i class="fa fa-file-excel"></i> Gerar relatórios</a>
+            @if (Model.Any(x => x.VendasStatus == VendasStatus.Ativa)) {
+                <a class="btn button" asp-action="RelatorioExecelAtivos" asp-controller="Vendas"><i class="fa fa-file-excel"></i> Gerar relatórios</a>
+            }
+            else {
+                <a class="btn button" asp-action="RelatorioExecelInativos" asp-controller="Vendas"><i class="fa fa-file-excel"></i> Gerar relatórios</a>
+            }
             <a class="btn button" asp-action="NewVenda" asp-controller="Vendas"><i class="fa fa-plus"></i> Venda</a>
-            </div>
+        </div>
     </div>
     <table id="table-funcionario" class="table shadow-sm p-3 mb-5 bg-white rounded">
         <thead>

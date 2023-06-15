@@ -41,6 +41,10 @@
       "PackagePath": "staticwebassets\\css\\menu.css"
     },
     {
+      "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\css\\paginaprincipal.css",
+      "PackagePath": "staticwebassets\\css\\paginaprincipal.css"
+    },
+    {
       "Id": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

@@ -1,4 +1,5 @@
-﻿using SugarProductionManagement.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SugarProductionManagement.Data;
 using SugarProductionManagement.Models;
 using SugarProductionManagement.Models.Enums;
 
@@ -55,6 +56,9 @@ namespace SugarProductionManagement.Repository
         public Produto Inativar(int id)
         {
             var produto = GetById(id);
+            if(_bancoContext.Producao.Any(x => x.ProdutoId == id && x.Status == StatusProducao.Ativo)) {
+                throw new Exception("Produto possi produção ativa!");
+            }
             produto.ProdutoStatus = ProdutoStatus.Inativo;
             _bancoContext.Update(produto);
             _bancoContext.SaveChanges();
@@ -70,10 +74,16 @@ namespace SugarProductionManagement.Repository
         }
 
         public List<Produto> GetAllAtivos() {
-            return _bancoContext.Produtos.Where(x => x.ProdutoStatus == ProdutoStatus.Ativo).ToList();
+            return _bancoContext.Produtos
+                .AsNoTracking().Include(x => x.ListProducao)
+                .AsNoTracking().Include(x => x.ListVendas)
+                .Where(x => x.ProdutoStatus == ProdutoStatus.Ativo).ToList();
         }
         public List<Produto> GetAllInativos() {
-            return _bancoContext.Produtos.Where(x => x.ProdutoStatus == ProdutoStatus.Inativo).ToList();
+            return _bancoContext.Produtos
+                .AsNoTracking().Include(x => x.ListProducao)
+                .AsNoTracking().Include(x => x.ListVendas)
+                .Where(x => x.ProdutoStatus == ProdutoStatus.Inativo).ToList();
         }
     }
 

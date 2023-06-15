@@ -40,7 +40,13 @@
             <a class="btn button" asp-action="Inativos" asp-controller="Produto">Inativos</a>
         </div>
         <div>
-            <a class="btn button" href="#"><i class="fa fa-file-excel"></i> Gerar relatórios</a>
+            @if (Model.Any(x => x.ProdutoStatus == ProdutoStatus.Ativo)) {
+                <a class="btn button" asp-action="RelatorioExcelAtivos" asp-controller="Produto"><i class="fa fa-file-excel"></i> Gerar relatórios</a>
+            }
+            else {
+                <a class="btn button" asp-action="RelatorioExcelInativos" asp-controller="Produto"><i class="fa fa-file-excel"></i> Gerar relatórios</a>
+
+            }
             <a class="btn button" asp-action="Create" asp-controller="Produto"><i class="fa fa-plus"></i> Produtos</a>
         </div>
     </div>

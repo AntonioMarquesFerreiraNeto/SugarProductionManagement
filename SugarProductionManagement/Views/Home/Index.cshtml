@@ -1,4 +1,77 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="~/css/funcionario.css">
+<link rel="stylesheet" href="~/css/paginaprincipal.css">
+<div class="container-funci">
+    <div class="container-title">
+        <h1 class="title"><i class="fa-solid fa-solid fa-house-chimney-window fa-skip"></i> Home</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body altura-minima-container">
+                    <h3 class="card-title">
+                        <i class="fa-solid fa-clipboard-list fa-shake"></i> Produtos
+                    </h3>
+                    <p class="card-text">
+                        Este módulo abrange a gestão financeira completa da empresa, incluindo receitas de contratos de
+                        clientes e despesas com fornecedores. Oferece um controle abrangente para que todas as
+                        ações de crédito e débito sejam registradas adequadamente, evitando esquecimentos.
+                    </p>
+                    <a asp-action="Index" asp-controller="Produto" class="btn button">Consultar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body altura-minima-container">
+                    <h3 class="card-title">
+                        <i class="fa-solid fa-clipboard-list fa-shake"></i> Produção
+                    </h3>
+                    <p class="card-text">
+                        Este módulo do sistema abrange todo o processo do contrato de alocação de frota, desde o
+                        preenchimento de informações e descrição da rota até a impressão do contrato para obtenção de
+                        assinaturas. Ele também inclui a aprovação do contrato, processos de rescisão e muito mais.
+                    </p>
+                    <a asp-action="Index" asp-controller="Producao" class="btn button">Consultar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body altura-minima-container">
+                    <h3 class="card-title">
+                        <i class="fa fa-handshake-angle fa-shake"></i>  Vendas
+                    </h3>
+                    <p class="card-text">
 
+                        Neste módulo, você terá acesso a recursos de geração de relatórios em PDF e Excel,
+                        incluindo dashboards de clientes, fornecedores, contratos, financeiro e assim por diante.
+                        Personalize seus relatórios usando filtros das tabelas de contratos, financeiro e frota em cada módulo e central.
+                    </p>
+                    <a asp-action="Index" asp-controller="Vendas" class="btn button">Consultar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" style="margin-top: 2px;">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        <i class="fa fa-clipboard-question fa-shake"></i> Descrição sobre o suporte ao sistema &copy; Sugar Production Management
+                    </h3>
+                    <p class="card-text">
+                        Qualquer problema encontrado no sistema ou sugestão de melhorias, entre em contato com a equipe
+                        de suporte do sistema. Nos quais, os canais de comunicação serão informados logo abaixo.
+                        Mas não esqueça de comunicar seu superior sobre o conflito ou problema.
+                        <br> <br>
+                        <b>E-mail:</b> sugarproductionmensagens@outlook.com,
+                        <br>
+                        <b>Celular: </b>+55 (62)98573-0236.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

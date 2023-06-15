@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xjSDQZKd08Co15N4lUuEeg1jIUwh+Z4XVBKxw6o2oI0=",
+  "Hash": "zoMI2ZXts1Nkvo6Vr/ZdJOGGutZmM0rfGuzWCt16LBU=",
   "Source": "SugarProductionManagement",
   "BasePath": "_content/SugarProductionManagement",
   "Mode": "Default",
@@ -202,6 +202,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\menu.css"
+    },
+    {
+      "Identity": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\css\\paginaprincipal.css",
+      "SourceId": "SugarProductionManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\",
+      "BasePath": "_content/SugarProductionManagement",
+      "RelativePath": "css/paginaprincipal.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\paginaprincipal.css"
     },
     {
       "Identity": "C:\\Users\\anton\\source\\repos\\SugarProductionManagement\\SugarProductionManagement\\wwwroot\\css\\site.css",
