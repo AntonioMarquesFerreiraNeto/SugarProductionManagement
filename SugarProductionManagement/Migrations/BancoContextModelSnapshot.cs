@@ -396,9 +396,6 @@ namespace SugarProductionManagement.Migrations
                     b.Property<int?>("ProducaoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("QtEntregue")
-                        .HasColumnType("int");
-
                     b.Property<int?>("QtSaidaLote")
                         .HasColumnType("int");
 
@@ -521,7 +518,7 @@ namespace SugarProductionManagement.Migrations
                         .WithMany()
                         .HasForeignKey("ProducaoId");
 
-                    b.HasOne("SugarProductionManagement.Models.Saida", null)
+                    b.HasOne("SugarProductionManagement.Models.Saida", "Saida")
                         .WithMany("ListVendaSaidas")
                         .HasForeignKey("SaidaId");
 
@@ -530,6 +527,8 @@ namespace SugarProductionManagement.Migrations
                         .HasForeignKey("VendaId");
 
                     b.Navigation("Producao");
+
+                    b.Navigation("Saida");
 
                     b.Navigation("Venda");
                 });

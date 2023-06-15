@@ -44,7 +44,7 @@
 .error-message small {
     position: absolute;
     font-size: 9pt;
-    top: 36.5px;
+    top: 37px;
     right: 13px;
     color: orangered;
 }
@@ -52,7 +52,7 @@
 .textarea small {
     position: absolute;
     font-size: 9pt;
-    top: 105.5px;
+    top: 115.5px;
     right: 13px;
     color: orangered;
 }

@@ -15,8 +15,15 @@ namespace SugarProductionManagement.Data {
         public DbSet<Venda> Venda { get; set; }
         public DbSet<Inventario> Inventario { get; set; }
         public DbSet<Saida> Saida { get; set; }
+        public DbSet<VendaSaidas> VendaSaidas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
+
+            //Estou obrigando a geração de ID no momento do create. 
+            modelBuilder.Entity<Saida>()
+            .Property(e => e.Id)
+            .ValueGeneratedOnAdd();
+            base.OnModelCreating(modelBuilder);
 
             //Aplicando a melhora do mapeamento para as movimentações.
             modelBuilder.ApplyConfiguration(new MapProducao());

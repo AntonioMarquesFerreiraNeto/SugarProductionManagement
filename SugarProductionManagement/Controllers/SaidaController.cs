@@ -26,9 +26,18 @@ namespace SugarProductionManagement.Controllers {
         }
 
         public IActionResult Lancamentos(int id) {
-            ViewBag.Id = id;
-            List<Saida> saidas = _saidaRepository.ListSaidasVendaById(id);
-            return View(saidas);
+            try {
+                if (string.IsNullOrEmpty(id.ToString())) {
+                    return RedirectToAction("Index");
+                }
+                ViewBag.Id = id;
+                List<Saida> saidas = _saidaRepository.ListSaidasVendaById(id);
+                return View(saidas);
+            }
+            catch (Exception error) {
+                TempData["Error"] = error.Message;
+                return RedirectToAction("Index");
+            }
         }
 
         public IActionResult Inativos(int id) {
@@ -37,15 +46,42 @@ namespace SugarProductionManagement.Controllers {
         }
 
         public IActionResult NewSaida(int id) {
-            ViewBag.Id = id;
-            Saida saida = new Saida();
-            Venda venda = new Venda();
-            saida.Venda = _vendaRepository.GetById(id);
+            try {
+                ViewBag.Id = id;
+                Saida saida = new Saida();
+                Venda venda = new Venda();
+                saida.Venda = _vendaRepository.GetById(id);
+                saida.ListProducoesProduto = _saidaRepository.ListProducoesByProdutoId(saida.Venda.ProdutoId!.Value);
+                saida.ProdutoId = saida.Venda.ProdutoId;
+                return View(saida);
+            }
+            catch (Exception error) {
+                TempData["Error"] = error.Message;
+                return RedirectToAction("Index");
+            }
+        }
+        [HttpPost]
+        public IActionResult NewSaida(Saida saida) {
+            ViewBag.Id = saida.VendaId;
+            saida.Venda = _vendaRepository.GetById(saida.VendaId!.Value);
             saida.ListProducoesProduto = _saidaRepository.ListProducoesByProdutoId(saida.Venda.ProdutoId!.Value);
-            return View(saida);
+            try {
+                if (!VendaSaidasList.Any()) {
+                    TempData["Error"] = "Nenhuma produção selecionada!";
+                    return View(saida);
+                }
+                TempData["Sucesso"] = "Registrada com sucesso!";
+                _saidaRepository.CreateSaida(saida, VendaSaidasList);
+                List<Saida> saidas = _saidaRepository.ListSaidasVendaById(saida.VendaId.Value);
+                return View("Lancamentos", saidas);
+            }
+            catch (Exception error) {
+                TempData["Error"] = error.Message;
+                return View(saida);
+            }
         }
 
-        
+
         public IActionResult ReturnList() {
             return PartialView("_SaidasPartial", VendaSaidasList);
         }
@@ -73,7 +109,7 @@ namespace SugarProductionManagement.Controllers {
         }
 
         public ActionResult RemoveSaidaTemp(int id) {
-            
+
             VendaSaidasList.RemoveAll(x => x.Producao!.Id == id);
             return PartialView("_SaidasPartial", VendaSaidasList);
         }
