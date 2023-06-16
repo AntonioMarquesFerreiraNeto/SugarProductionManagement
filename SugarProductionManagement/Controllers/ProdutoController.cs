@@ -7,7 +7,7 @@ using SugarProductionManagement.Models;
 using SugarProductionManagement.Models.Enums;
 using SugarProductionManagement.Repository;
 
-[PagUserAutenticado]
+[PagUserCadastro]
 public class ProdutoController : Controller {
     private readonly IProdutoRepository _produtoRepository;
 

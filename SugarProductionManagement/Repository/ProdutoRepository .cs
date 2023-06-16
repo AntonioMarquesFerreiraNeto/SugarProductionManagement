@@ -23,6 +23,9 @@ namespace SugarProductionManagement.Repository
         {
             try
             {
+                if (ValidatioDuplicata(produto)) {
+                    throw new Exception("Produto já se encontra registrado!");
+                }
                 produto.QtEstoque = 0;
                 produto.QtReservada = 0;
                 _bancoContext.Produtos.Add(produto);
@@ -40,6 +43,9 @@ namespace SugarProductionManagement.Repository
             try
             {
                 var produtoDB = GetById(produto.Id);
+                if (ValidatioDuplicataEdit(produto, produtoDB)) {
+                    throw new Exception("Produto já se encontra registrado!");
+                }
                 produtoDB.Nome = produto.Nome;
                 produtoDB.Descricao = produto.Descricao;
                 produtoDB.Preco = produto.Preco;
@@ -84,6 +90,20 @@ namespace SugarProductionManagement.Repository
                 .AsNoTracking().Include(x => x.ListProducao)
                 .AsNoTracking().Include(x => x.ListVendas)
                 .Where(x => x.ProdutoStatus == ProdutoStatus.Inativo).ToList();
+        }
+
+        public bool ValidatioDuplicata(Produto produto) {
+            if (_bancoContext.Produtos.Any(x => x.Nome == produto.Nome)) {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ValidatioDuplicataEdit(Produto produto, Produto produtoDB) {
+            if (_bancoContext.Produtos.Any(x => x.Nome == produto.Nome && produto.Nome != produtoDB.Nome)) {
+                return true;
+            }
+            return false;
         }
     }
 

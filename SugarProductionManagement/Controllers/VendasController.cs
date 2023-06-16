@@ -5,7 +5,7 @@ using SugarProductionManagement.Models;
 using SugarProductionManagement.Repository;
 
 namespace SugarProductionManagement.Controllers {
-    [PagUserAutenticado]
+    [PagRfVenda]
     public class VendasController : Controller {
 
         private readonly IVendaRepository _vendaRepository;

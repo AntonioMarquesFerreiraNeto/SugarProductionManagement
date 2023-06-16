@@ -5,7 +5,7 @@ using SugarProductionManagement.Repository;
 
 namespace SugarProductionManagement.Controllers {
 
-    [PagUserAutenticado]
+    [PagUserCadastro]
     public class FornecedorController : Controller {
 
         private readonly IClienteRepository _repository;

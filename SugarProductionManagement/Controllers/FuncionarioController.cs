@@ -6,7 +6,7 @@ using System.CodeDom.Compiler;
 
 namespace SugarProductionManagement.Controllers {
 
-    [PagUserAutenticado]
+    [PagUserCadastro]
     public class FuncionarioController : Controller {
 
         private readonly IFuncionarioRepository _funcionarioRepository;

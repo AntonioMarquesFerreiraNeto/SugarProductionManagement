@@ -25,6 +25,7 @@ namespace SugarProductionManagement.Repository {
 
         public Funcionario Create(Funcionario funcionario) {
             try {
+                if (ValidationDuplicata(funcionario)) throw new Exception("Funcionário já se encontra registrado!");
                 funcionario.SetSenhaUser();
                 if (!EnviarSenha(funcionario)) throw new Exception("Desculpe, não conseguimos enviar o e-mail!");
                 _bancoContext.Funcionario.Add(funcionario);
@@ -60,6 +61,7 @@ namespace SugarProductionManagement.Repository {
         public Funcionario Update(Funcionario funcionario) {
             try {
                 Funcionario funcionarioDB = GetFuncionarioById(funcionario.Id);
+                if (ValidationDuplicataEdit(funcionario, funcionarioDB)) throw new Exception("Funcionário já se encontra registrado!");
                 if (funcionarioDB == null) throw new Exception("Nenhum registro encontrado!");
                 funcionarioDB.Name = funcionario.Name;
                 funcionarioDB.Rg = funcionario.Rg;
@@ -133,6 +135,27 @@ namespace SugarProductionManagement.Repository {
                 _bancoContext.SaveChanges();
             }
 
+        }
+
+        public bool ValidationDuplicata(Funcionario funcionario) {
+            List<Funcionario> funcionarios = _bancoContext.Funcionario.ToList();
+            if (funcionarios.Any(x => x.Cpf == funcionario.Cpf || x.Rg == funcionario.Rg || x.Email == funcionario.Email || x.Tel == funcionario.Tel)) {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ValidationDuplicataEdit(Funcionario funcionario, Funcionario funcionarioDB) {
+            List<Funcionario> funcionarios = _bancoContext.Funcionario.ToList();
+
+            if (funcionarios.Any(x => (x.Cpf == funcionario.Cpf && x.Cpf != funcionarioDB.Cpf) ||
+                                      (x.Rg == funcionario.Rg && x.Rg != funcionarioDB.Rg) ||
+                                      (x.Email == funcionario.Email && x.Email != funcionarioDB.Email) ||
+                                      (x.Tel == funcionario.Tel && x.Tel != funcionarioDB.Tel))) {
+                return true;
+            }
+
+            return false;
         }
     }
 }

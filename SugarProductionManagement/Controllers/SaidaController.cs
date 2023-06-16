@@ -7,7 +7,7 @@ using SugarProductionManagement.Models.Enums;
 using SugarProductionManagement.Repository;
 
 namespace SugarProductionManagement.Controllers {
-    [PagUserAutenticado]
+    [PagRfSaida]
     public class SaidaController : Controller {
 
         public static List<VendaSaidas> VendaSaidasList = new List<VendaSaidas>();

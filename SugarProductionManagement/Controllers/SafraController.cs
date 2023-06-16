@@ -5,7 +5,7 @@ using SugarProductionManagement.Repository;
 
 namespace SugarProductionManagement.Controllers {
 
-    [PagUserAutenticado]
+    [PagProducaoSafra]
     public class SafraController : Controller {
 
         private readonly ISafraRepository _safraRepository;

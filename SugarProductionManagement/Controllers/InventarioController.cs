@@ -5,7 +5,7 @@ using SugarProductionManagement.Models;
 using SugarProductionManagement.Repository;
 
 namespace SugarProductionManagement.Controllers {
-    [PagUserAutenticado]
+    [PagRfInventario]
     public class InventarioController : Controller {
 
         private readonly IInventarioRepository _inventarioRepository;
