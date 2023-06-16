@@ -24,6 +24,7 @@ namespace SugarProductionManagement.Repository {
         public Producao Create(Producao producao) {
             try {
                 if (producao.QtProduzida < 1) throw new Exception("Quantidade produzida inválida!");
+                if (ValidationDuplicata(producao)) throw new Exception("Lote de produção já registrado!");
                 AltaEstoqueProduto(producao);
                 producao.QtEstoque = producao.QtProduzida;
                 _bancoContext.Producao.Add(producao);
@@ -78,6 +79,7 @@ namespace SugarProductionManagement.Repository {
             try {
                 if (producao.QtProduzida < 1) throw new Exception("Quantidade produzida inválida!");
                 Producao producaoDB = GetById(producao.Id);
+                if (ValidationDuplicataEdit(producao, producaoDB)) throw new Exception("Lote de produção já registrado!");
                 if (_bancoContext.Inventario.Any(x => x.ProducaoId == producaoDB.Id)) throw new Exception("Produção possui inventários!");
                 if (producao.QtProduzida != producaoDB.QtProduzida) AltaOrBaixaEstoque(producao, producaoDB);
                 //Adicionar validações para não deixar que seja realizado update de produção com vendas, saídas ou invetários.
@@ -116,6 +118,21 @@ namespace SugarProductionManagement.Repository {
                 produtoDB.QtEstoque = QtEstoqueProduto - qtProdutos;
             }
             _bancoContext.Produtos.Update(produtoDB);
+        }
+
+        public bool ValidationDuplicata(Producao producao) {
+            List<Producao> list = _bancoContext.Producao.ToList();
+            if (list.Any(x => x.Lote == producao.Lote)) {
+                return true;
+            }
+            return false;
+        }
+        public bool ValidationDuplicataEdit(Producao producao, Producao producaoDB) {
+            List<Producao> list = _bancoContext.Producao.ToList();
+            if (list.Any(x => x.Lote == producao.Lote && producao.Lote != producaoDB.Lote)) {
+                return true;
+            }
+            return false;   
         }
     }
 }

@@ -34,7 +34,7 @@
             <a class="btn button" asp-action="Index" asp-controller="Saida"><i class="fa fa-arrow-alt-circle-left"></i> Voltar</a>
         </div>
         <div>
-            <a class="btn button" href="#"><i class="fa fa-file-excel"></i> Gerar relatórios</a>
+            <a class="btn button" asp-action="RelatorioPicking" asp-controller="Saida" asp-route-id="@ViewBag.Id"><i class="fa fa-file-excel"></i> Gerar relatórios</a>
             <a class="btn button" asp-route-id="@ViewBag.Id" asp-action="NewSaida" asp-controller="Saida"><i class="fa fa-plus"></i> picking</a>
         </div>
     </div>
@@ -45,6 +45,7 @@
                 <th style="font-size: 9pt;" scope="col">Cod. carregamento</th>
                 <th style="font-size: 9pt;" scope="col">Qt unitárias</th>
                 <th style="font-size: 9pt;" scope="col">Funcionario</th>
+                <th style="font-size: 9pt;" scope="col">Situação</th>
                 <th style="font-size: 9pt" scope="col">Opções</th>
             </tr>
         </thead>
@@ -56,9 +57,15 @@
                         <td>@item.CodCarregamento</td>
                         <td>@item.QtSaidaTotal</td>
                         <td>@item.Funcionario!.Name</td>
+                        @if (item.SaidaStatus == SaidaStatus.Ativo) {
+                            <td>Ativos</td>
+                        }
+                        else {
+                            <td>Inativos</td>
+                        }
                         @if (item.SaidaStatus != SaidaStatus.Inativo) {
                             <td>
-                                <a class="trash" asp-action="Inativar"><i class="fa fa-trash-alt"></i></a>
+                                <a class="trash" asp-action="InativarSaida" asp-controller="Saida" asp-route-id="@item.Id"><i class="fa fa-trash-alt"></i></a>
                             </td>
                         }
                         else {

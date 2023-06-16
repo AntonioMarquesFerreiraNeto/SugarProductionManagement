@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DocumentFormat.OpenXml.Office.CustomUI;
+using Microsoft.EntityFrameworkCore;
 using SugarProductionManagement.Data;
 using SugarProductionManagement.Helpers;
 using SugarProductionManagement.Models;
@@ -37,7 +38,7 @@ namespace SugarProductionManagement.Repository {
         }
         public void AlterQtEntregueAndEntregarVendas(Saida saida) {
             Venda vendaDB = _bancoContext.Venda.FirstOrDefault(x => x.Id == saida.VendaId)!;
-            if (vendaDB.QtEntregue == vendaDB.QtVendida) throw new Exception("Venda possui todos os carregamentos entregues!"); 
+            if (vendaDB.QtEntregue == vendaDB.QtVendida) throw new Exception("Venda possui todos os carregamentos entregues!");
             vendaDB.QtEntregue = vendaDB.QtEntregue + saida.QtSaidaTotal;
             if (vendaDB.QtEntregue > vendaDB.QtVendida) throw new Exception("Ação inválida, quantidade total informada passa a quantia de vendas!");
             _bancoContext.Venda.Update(vendaDB);
@@ -72,11 +73,45 @@ namespace SugarProductionManagement.Repository {
                 .AsNoTracking().Include(x => x.Funcionario)
                 .AsNoTracking().Include(x => x.Cliente)
                 .AsNoTracking().Include(x => x.Venda)
-                .Where(x => x.VendaId == id && x.SaidaStatus == SaidaStatus.Ativo).ToList();
+                .Where(x => x.VendaId == id).ToList();
         }
 
         public List<Saida> ListSaidaVendaInativasById(int id) {
             return _bancoContext.Saida.Where(x => x.VendaId == id && x.SaidaStatus == SaidaStatus.Inativo).ToList();
+        }
+
+        public Saida GetById(int id) {
+            return _bancoContext.Saida
+                .AsNoTracking().Include(x => x.Produto)
+                .AsNoTracking().Include(x => x.ListVendaSaidas)!.ThenInclude(x => x.Producao)
+                .FirstOrDefault(x => x.Id == id);
+        }
+
+        public Saida InativarSaida(int id) {
+            Saida saida = _bancoContext.Saida.FirstOrDefault(x => x.Id == id) ?? throw new Exception("Desculpe, objeto não encontrado!");
+            saida.SaidaStatus = SaidaStatus.Inativo;
+            AltaAndBaixaEstoque(saida);
+            _bancoContext.Saida.Update(saida);
+            _bancoContext.SaveChanges();
+            return saida;
+        }
+        public void AltaAndBaixaEstoque(Saida saida) {
+
+            Produto produto = _bancoContext.Produtos.FirstOrDefault(x => x.Id == saida.ProdutoId)!;
+            produto.QtEstoque = produto.QtEstoque + saida.QtSaidaTotal;
+            produto.QtReservada = produto.QtReservada + saida.QtSaidaTotal;
+            _bancoContext.Update(produto);
+
+            Venda venda = _bancoContext.Venda.FirstOrDefault(x => x.Id == saida.VendaId)!;
+            venda.QtEntregue = venda.QtEntregue - saida.QtSaidaTotal;
+            _bancoContext.Venda.Update(venda);
+
+            List<VendaSaidas> vendasSaida = _bancoContext.VendaSaidas.Where(x => x.SaidaId == saida.Id).ToList();
+            foreach (var item in vendasSaida) {
+                Producao producao = _bancoContext.Producao.FirstOrDefault(x => x.Id == item.ProducaoId)!;
+                producao.QtEstoque = producao.QtEstoque + item.QtSaidaLote;
+                _bancoContext.Producao.Update(producao);
+            }
         }
     }
 }

@@ -191,7 +191,7 @@ public class ProdutoController : Controller {
                 var folha = folhaBook.Worksheets.Add("Sample sheet");
                 folha.Cell(1, "A").Value = "ID";
                 folha.Cell(1, "B").Value = "Nome";
-                folha.Cell(1, "C").Value = "Preço";
+                folha.Cell(1, "C").Value = "Preço unitário";
                 folha.Cell(1, "D").Value = "Qt. em estoque";
                 folha.Cell(1, "E").Value = "Qt. reservada";
                 folha.Cell(1, "F").Value = "Qt. produções";
